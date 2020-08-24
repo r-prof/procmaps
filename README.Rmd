@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # procmaps
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The goal of procmaps is to help determine which library or other region is mapped to a specific address of a process.
