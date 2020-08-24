@@ -57,4 +57,5 @@ This package provides the equivalent as a data frame:
 ``` r
 library(procmaps)
 procmap_get()
+#> data frame with 0 columns and 0 rows
 ```
