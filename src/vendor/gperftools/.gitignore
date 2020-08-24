@@ -1,1 +1,14 @@
 autom4te.cache/
+Makefile
+benchmark/
+config.log
+config.status
+libtool
+src/.deps/
+src/base/.deps/
+src/config.h
+src/gperftools/tcmalloc.h
+src/stamp-h1
+src/tests/.deps/
+src/windows/.deps/
+src/windows/gperftools/tcmalloc.h
