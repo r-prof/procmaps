@@ -1,0 +1,46 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# procmaps
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of procmaps is to help determine which library or other region is mapped to a specific address of a process.
+It is the equivalent of `/proc/self/maps` as a data frame, and is designed to work on all major platforms.
+
+
+## Installation
+
+You can install the released version of procmaps from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("procmaps")
+```
+
+## Example
+
+This is what `/proc/self/maps` looks like when this document is rendered:
+
+```{bash}
+cat /proc/self/maps
+```
+
+This package provides the equivalent as a data frame:
+
+```{r eval = FALSE}
+library(procmaps)
+procmap_get()
+```
