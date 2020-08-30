@@ -1,7 +1,3 @@
-#define R_NO_REMAP
-#include <R.h>
-#include <Rinternals.h>
-
 #include "vendor/gperftools/src/base/logging.cc"
 #include "vendor/gperftools/src/base/sysinfo.cc"
 
