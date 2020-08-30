@@ -12,3 +12,4 @@ src/stamp-h1
 src/tests/.deps/
 src/windows/.deps/
 src/windows/gperftools/tcmalloc.h
+.dirstamp
