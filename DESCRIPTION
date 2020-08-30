@@ -3,11 +3,16 @@ Title: Portable Address Space Mapping
 Version: 0.0.0.9000
 Date: 2020-08-24
 Authors@R: 
-    person(given = "Kirill",
-           family = "Müller",
-           role = c("aut", "cre"),
-           email = "krlmlr+r@mailbox.org",
-           comment = c(ORCID = "0000-0002-1416-3412"))
+    c(
+        person(given = "Kirill",
+               family = "Müller",
+               role = c("aut", "cre"),
+               email = "krlmlr+r@mailbox.org",
+               comment = c(ORCID = "0000-0002-1416-3412")),
+        person(family = "Google Inc.",
+               role = "cph",
+               comment = "Bundled gperftools library")
+    )
 Description: Portable '/proc/self/maps' as a data frame.
     Determine which library or other region is mapped to a specific address
     of a process.
