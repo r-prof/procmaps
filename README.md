@@ -30,25 +30,25 @@ rendered:
 
 ``` bash
 cat /proc/self/maps
-#> 55d7c0a61000-55d7c0a69000 r-xp 00000000 fd:01 2883652                    /bin/cat
-#> 55d7c0c68000-55d7c0c69000 r--p 00007000 fd:01 2883652                    /bin/cat
-#> 55d7c0c69000-55d7c0c6a000 rw-p 00008000 fd:01 2883652                    /bin/cat
-#> 55d7c2396000-55d7c23b7000 rw-p 00000000 00:00 0                          [heap]
-#> 7fe1cf912000-7fe1cfd71000 r--p 00000000 fd:01 29370411                   /usr/lib/locale/locale-archive
-#> 7fe1cfd71000-7fe1cff58000 r-xp 00000000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
-#> 7fe1cff58000-7fe1d0158000 ---p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
-#> 7fe1d0158000-7fe1d015c000 r--p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
-#> 7fe1d015c000-7fe1d015e000 rw-p 001eb000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
-#> 7fe1d015e000-7fe1d0162000 rw-p 00000000 00:00 0 
-#> 7fe1d0162000-7fe1d0189000 r-xp 00000000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so
-#> 7fe1d035c000-7fe1d035e000 rw-p 00000000 00:00 0 
-#> 7fe1d0367000-7fe1d0389000 rw-p 00000000 00:00 0 
-#> 7fe1d0389000-7fe1d038a000 r--p 00027000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so
-#> 7fe1d038a000-7fe1d038b000 rw-p 00028000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so
-#> 7fe1d038b000-7fe1d038c000 rw-p 00000000 00:00 0 
-#> 7fff18b00000-7fff18b22000 rw-p 00000000 00:00 0                          [stack]
-#> 7fff18b8e000-7fff18b91000 r--p 00000000 00:00 0                          [vvar]
-#> 7fff18b91000-7fff18b93000 r-xp 00000000 00:00 0                          [vdso]
+#> 55ac4e290000-55ac4e298000 r-xp 00000000 fd:01 2883652                    /bin/cat
+#> 55ac4e497000-55ac4e498000 r--p 00007000 fd:01 2883652                    /bin/cat
+#> 55ac4e498000-55ac4e499000 rw-p 00008000 fd:01 2883652                    /bin/cat
+#> 55ac4ea08000-55ac4ea29000 rw-p 00000000 00:00 0                          [heap]
+#> 7fa87aa60000-7fa87aebf000 r--p 00000000 fd:01 29370411                   /usr/lib/locale/locale-archive
+#> 7fa87aebf000-7fa87b0a6000 r-xp 00000000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
+#> 7fa87b0a6000-7fa87b2a6000 ---p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
+#> 7fa87b2a6000-7fa87b2aa000 r--p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
+#> 7fa87b2aa000-7fa87b2ac000 rw-p 001eb000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so
+#> 7fa87b2ac000-7fa87b2b0000 rw-p 00000000 00:00 0 
+#> 7fa87b2b0000-7fa87b2d7000 r-xp 00000000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so
+#> 7fa87b4aa000-7fa87b4ac000 rw-p 00000000 00:00 0 
+#> 7fa87b4b5000-7fa87b4d7000 rw-p 00000000 00:00 0 
+#> 7fa87b4d7000-7fa87b4d8000 r--p 00027000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so
+#> 7fa87b4d8000-7fa87b4d9000 rw-p 00028000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so
+#> 7fa87b4d9000-7fa87b4da000 rw-p 00000000 00:00 0 
+#> 7ffe08f77000-7ffe08f99000 rw-p 00000000 00:00 0                          [stack]
+#> 7ffe08fa2000-7ffe08fa5000 r--p 00000000 00:00 0                          [vvar]
+#> 7ffe08fa5000-7ffe08fa7000 r-xp 00000000 00:00 0                          [vdso]
 #> ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 ```
 
@@ -57,5 +57,35 @@ This package provides the equivalent as a data frame:
 ``` r
 library(procmaps)
 procmap_get()
-#> data frame with 0 columns and 0 rows
+#>            from           to perms   offset   dev    inode
+#> 1  555805c51000 555805c52000  r-xp 00000000 00:00 29393780
+#> 2  555805e51000 555805e52000  r--p 00000000 00:00 29393780
+#> 3  555805e52000 555805e53000  rw-p 00001000 00:00 29393780
+#> 4  555807755000 55580c50f000  rw-p 00000000 00:00        0
+#> 5  7ff23a6a6000 7ff23a6aa000  r-xp 00000000 00:00 28978704
+#> 6  7ff23a6aa000 7ff23a8a9000  ---p 00004000 00:00 28978704
+#> 7  7ff23a8a9000 7ff23a8aa000  r--p 00003000 00:00 28978704
+#> 8  7ff23a8aa000 7ff23a8ab000  rw-p 00004000 00:00 28978704
+#> 9  7ff23a8ab000 7ff23a8af000  rw-p 00000000 00:00        0
+#> 10 7ff23a8af000 7ff23a8b1000  r-xp 00000000 00:00 28722648
+#> 11 7ff23a8b1000 7ff23aab0000  ---p 00002000 00:00 28722648
+#> 12 7ff23aab0000 7ff23aab1000  r--p 00001000 00:00 28722648
+#> 13 7ff23aab1000 7ff23aab2000  rw-p 00002000 00:00 28722648
+#> 14 7ff23aab2000 7ff23aac6000  r-xp 00000000 00:00 28722678
+#>                                              pathname
+#> 1                               /usr/lib/R/bin/exec/R
+#> 2                               /usr/lib/R/bin/exec/R
+#> 3                               /usr/lib/R/bin/exec/R
+#> 4                                              [heap]
+#> 5  /home/kirill/git/R/r-prof/procmaps/src/procmaps.so
+#> 6  /home/kirill/git/R/r-prof/procmaps/src/procmaps.so
+#> 7  /home/kirill/git/R/r-prof/procmaps/src/procmaps.so
+#> 8  /home/kirill/git/R/r-prof/procmaps/src/procmaps.so
+#> 9                                                    
+#> 10               /home/kirill/R-dev/glue/libs/glue.so
+#> 11               /home/kirill/R-dev/glue/libs/glue.so
+#> 12               /home/kirill/R-dev/glue/libs/glue.so
+#> 13               /home/kirill/R-dev/glue/libs/glue.so
+#> 14             /home/kirill/R-dev/fansi/libs/fansi.so
+#>  [ reached 'max' / getOption("max.print") -- omitted 357 rows ]
 ```
