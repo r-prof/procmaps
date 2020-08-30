@@ -16,7 +16,7 @@ Description: Portable '/proc/self/maps' as a data frame.
     address of a process.
 License: GPL-3
 URL: https://github.com/r-prof/procmaps,
-    http://r-prof.github.io/procmaps
+    https://r-prof.github.io/procmaps
 BugReports: https://github.com/r-prof/procmaps/issues
 Encoding: UTF-8
 LazyData: true
