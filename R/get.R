@@ -6,5 +6,5 @@
 #' procmap_get()
 #' @export
 procmap_get <- function() {
-  data.frame()
+  .Call(procmaps_c_procmap_get)
 }
