@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -x
+
+cd src/vendor/gperftools
+
+if ! [ -f src/config.h ]; then
+  ./configure
+fi
