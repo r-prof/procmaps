@@ -34,13 +34,14 @@ install.packages("procmaps")
 
 ## Example
 
-This is what `/proc/self/maps` looks like when this document is rendered:
+This is what `/proc/self/maps` looks like (on Linux) when this document is rendered:
 
 ```{bash}
 cat /proc/self/maps
 ```
 
-This package provides the equivalent as a data frame:
+Other operating systems make this information available in other form.
+This package provides the equivalent as a data frame, regardless of operating system:
 
 ```{r}
 library(procmaps)

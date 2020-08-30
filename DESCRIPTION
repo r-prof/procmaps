@@ -18,6 +18,8 @@ License: GPL-3
 URL: https://github.com/r-prof/procmaps,
     https://r-prof.github.io/procmaps
 BugReports: https://github.com/r-prof/procmaps/issues
+Suggests: 
+    tibble
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
