@@ -4,5 +4,5 @@ all: $(SHLIB)
 
 glue.o: vendor/gperftools/src/config.h vendor/gperftools/src/base/logging.cc vendor/gperftools/src/base/sysinfo.cc
 
-vendor/gperftools/src/config.h:
+vendor/gperftools/src/config.h: vendor/gperftools/src/config.h.in
 	cd vendor/gperftools && CC="$(CC)" CXX="$(CXX)" ./configure

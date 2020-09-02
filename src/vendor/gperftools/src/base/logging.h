@@ -66,7 +66,7 @@
 // MSVC and mingw define their own, safe version of vnsprintf (the
 // windows one in broken) in port.cc.  Everyone else can use the
 // version here.  We had to give it a unique name for windows.
-#ifndef _WIN32
+#if !defined(_WIN32) || defined(__MINGW32__)
 # define perftools_vsnprintf vsnprintf
 #endif
 
