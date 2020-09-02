@@ -55,12 +55,12 @@
 // prefer that.  Note we don't care about errno for logging: we just
 // do logging on a best-effort basis.
 #if defined(_MSC_VER)
-#define WRITE_TO_STDERR(buf, len) WriteToStderr(buf, len);  // in port.cc
+#define WRITE_TO_STDERR(buf, len)
 #elif defined(HAVE_SYS_SYSCALL_H)
 #include <sys/syscall.h>
-#define WRITE_TO_STDERR(buf, len) syscall(SYS_write, STDERR_FILENO, buf, len)
+#define WRITE_TO_STDERR(buf, len)
 #else
-#define WRITE_TO_STDERR(buf, len) write(STDERR_FILENO, buf, len)
+#define WRITE_TO_STDERR(buf, len)
 #endif
 
 // MSVC and mingw define their own, safe version of vnsprintf (the
