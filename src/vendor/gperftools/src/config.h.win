@@ -10,7 +10,7 @@
 /* #undef ENABLE_AGGRESSIVE_DECOMMIT_BY_DEFAULT */
 
 /* Build new/delete operators for overaligned types */
-/* #undef ENABLE_ALIGNED_NEW_DELETE */
+#define ENABLE_ALIGNED_NEW_DELETE 1
 
 /* Build runtime detection for sized delete */
 /* #undef ENABLE_DYNAMIC_SIZED_DELETE */
