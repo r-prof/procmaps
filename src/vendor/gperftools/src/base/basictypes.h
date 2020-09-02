@@ -308,7 +308,7 @@ class AssignAttributeStartEnd {
  public:
   AssignAttributeStartEnd(const char* name, char** pstart, char** pend) {
     // Find out what dynamic library name is defined in
-    if (_dyld_present()) {
+    if (1) {
       for (int i = _dyld_image_count() - 1; i >= 0; --i) {
         const mach_header* hdr = _dyld_get_image_header(i);
 #ifdef MH_MAGIC_64
