@@ -86,7 +86,7 @@ DECLARE_int32(verbose);
     if (!(condition)) {                                                 \
       WRITE_TO_STDERR("Check failed: " #condition "\n",                 \
                       sizeof("Check failed: " #condition "\n")-1);      \
-      abort();                                                          \
+      glue_abort();                                                     \
     }                                                                   \
   } while (0)
 
@@ -96,7 +96,7 @@ DECLARE_int32(verbose);
     if (!(condition)) {                                                        \
       WRITE_TO_STDERR("Check failed: " #condition ": " message "\n",           \
                       sizeof("Check failed: " #condition ": " message "\n")-1);\
-      abort();                                                                 \
+      glue_abort();                                                            \
     }                                                                          \
   } while (0)
 
@@ -119,7 +119,7 @@ enum { DEBUG_MODE = 1 };
                       sizeof("Check failed: " #condition ": ")-1);      \
       WRITE_TO_STDERR(strerror(err_no), strlen(strerror(err_no)));      \
       WRITE_TO_STDERR("\n", sizeof("\n")-1);                            \
-      abort();                                                          \
+      glue_abort();                                                     \
     }                                                                   \
   } while (0)
 
@@ -135,8 +135,7 @@ enum { DEBUG_MODE = 1 };
 #define CHECK_OP(op, val1, val2)                                        \
   do {                                                                  \
     if (!((val1) op (val2))) {                                          \
-      fprintf(stderr, "Check failed: %s %s %s\n", #val1, #op, #val2);   \
-      abort();                                                          \
+      glue_abort_msg("Check failed: %s %s %s\n", #val1, #op, #val2);    \
     }                                                                   \
   } while (0)
 
@@ -206,7 +205,7 @@ inline void LogPrintf(int severity, const char* pat, va_list ap) {
   }
   WRITE_TO_STDERR(buf, strlen(buf));
   if ((severity) == FATAL)
-    abort(); // LOG(FATAL) indicates a big problem, so don't run atexit() calls
+    glue_abort(); // LOG(FATAL) indicates a big problem, so don't run atexit() calls
 }
 
 // Note that since the order of global constructors is unspecified,
