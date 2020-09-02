@@ -7,7 +7,8 @@
 procmap_get(as_tibble = NULL)
 }
 \arguments{
-\item{as_tibble}{When using in a package, set to \code{TRUE} to return a \link{tibble}.
+\item{as_tibble}{When using in a package, set to \code{TRUE} to return a
+\link[tibble:tibble]{tibble::tibble}.
 This requires the tibble package to be installed.
 The default returns a tibble if the package is installed, otherwise a
 data frame.}

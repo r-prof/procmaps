@@ -2,7 +2,8 @@
 #'
 #' Returns the address space map of a process as a data frame.
 #'
-#' @param as_tibble When using in a package, set to `TRUE` to return a [tibble].
+#' @param as_tibble When using in a package, set to `TRUE` to return a
+#'   [tibble::tibble].
 #'   This requires the tibble package to be installed.
 #'   The default returns a tibble if the package is installed, otherwise a
 #'   data frame.
