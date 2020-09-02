@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^procmaps\.Rproj$
 ^README\.Rmd$
+^\.github$
+\.dirstamp$
