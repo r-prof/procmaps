@@ -7,6 +7,7 @@
 #'   This requires the tibble package to be installed.
 #'   The default returns a tibble if the package is installed, otherwise a
 #'   data frame.
+#' @return A data frame or tibble, depending on the `as_tibble` argument.
 #' @export
 #' @examples
 #' procmap_get()
