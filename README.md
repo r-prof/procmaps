@@ -67,3 +67,9 @@ Other operating systems make this information available in other form. This pack
 <span class='c'>#&gt; <span style='color: #BCBCBC;'>10</span><span> 7fbcdcbc… 7fbcdcdc… ---p  000020… 00:00 </span><span style='color: #949494;'>"</span><span>287226… /home/kirill/R-dev/glue/lib…</span></span>
 <span class='c'>#&gt; <span style='color: #949494;'># … with 364 more rows</span></span>
 </pre>
+
+-----
+
+## Code of Conduct
+
+Please note that the procmaps project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
