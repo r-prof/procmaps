@@ -4,7 +4,7 @@
 
 <!-- badges: start -->
 
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![CRAN status](https://www.r-pkg.org/badges/version/procmaps)](https://CRAN.R-project.org/package=procmaps)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![R build status](https://github.com/r-prof/procmaps/workflows/rcc/badge.svg)](https://github.com/r-prof/procmaps/actions) [![Codecov test coverage](https://codecov.io/gh/r-prof/procmaps/branch/master/graph/badge.svg)](https://codecov.io/gh/r-prof/procmaps?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/procmaps)](https://CRAN.R-project.org/package=procmaps)
 
 <!-- badges: end -->
 
@@ -49,8 +49,8 @@ This is what `/proc/self/maps` looks like (on Linux) when this document is rende
 Other operating systems make this information available in other form. This package provides the equivalent as a data frame, regardless of operating system:
 
 <pre class='chroma'>
-<span class='nf'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='k'><a href='https://github.com/r-prof/procmaps'>procmaps</a></span>)
-<span class='nf'><a href='https://rdrr.io/pkg/procmaps/man/procmap_get.html'>procmap_get</a></span>()
+<span class='nf'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='k'><a href='https://r-prof.github.io/procmaps/'>procmaps</a></span>)
+<span class='nf'><a href='https://r-prof.github.io/procmaps/reference/procmap_get.html'>procmap_get</a></span>()
 <span class='c'>#&gt; Converting to tibble, mute this message with `as_tibble = TRUE`.</span>
 <span class='c'>#&gt; <span style='color: #949494;'># A tibble: 374 x 7</span></span>
 <span class='c'>#&gt;    <span style='font-weight: bold;'>from</span><span>      </span><span style='font-weight: bold;'>to</span><span>        </span><span style='font-weight: bold;'>perms</span><span> </span><span style='font-weight: bold;'>offset</span><span>  </span><span style='font-weight: bold;'>dev</span><span>   </span><span style='font-weight: bold;'>inode</span><span>    </span><span style='font-weight: bold;'>pathname</span><span>                    </span></span>
@@ -67,3 +67,9 @@ Other operating systems make this information available in other form. This pack
 <span class='c'>#&gt; <span style='color: #BCBCBC;'>10</span><span> 7fbcdcbc… 7fbcdcdc… ---p  000020… 00:00 </span><span style='color: #949494;'>"</span><span>287226… /home/kirill/R-dev/glue/lib…</span></span>
 <span class='c'>#&gt; <span style='color: #949494;'># … with 364 more rows</span></span>
 </pre>
+
+-----
+
+## Code of Conduct
+
+Please note that the procmaps project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

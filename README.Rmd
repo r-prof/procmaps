@@ -1,5 +1,5 @@
 ---
-output: pkgdown::readme_document
+output: downlit::readme_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -18,6 +18,8 @@ pkgload::load_all()
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build status](https://github.com/r-prof/procmaps/workflows/rcc/badge.svg)](https://github.com/r-prof/procmaps/actions)
+[![Codecov test coverage](https://codecov.io/gh/r-prof/procmaps/branch/master/graph/badge.svg)](https://codecov.io/gh/r-prof/procmaps?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/procmaps)](https://CRAN.R-project.org/package=procmaps)
 <!-- badges: end -->
 
@@ -48,3 +50,9 @@ This package provides the equivalent as a data frame, regardless of operating sy
 library(procmaps)
 procmap_get()
 ```
+
+---
+
+## Code of Conduct
+
+Please note that the procmaps project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

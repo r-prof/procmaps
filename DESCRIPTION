@@ -15,14 +15,14 @@ Description: Portable '/proc/self/maps' as a data frame.
     Determine which library or other region is mapped to a specific
     address of a process.
 License: GPL-3
-URL: https://github.com/r-prof/procmaps,
-    https://r-prof.github.io/procmaps
+URL: https://r-prof.github.io/procmaps/, https://github.com/r-prof/procmaps
 BugReports: https://github.com/r-prof/procmaps/issues
 Suggests: 
-    tibble,
-    testthat
-SystemRequirements: GNU make, gcc (>= 5) or clang
+    covr,
+    testthat,
+    tibble
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1.9000
+SystemRequirements: GNU make, gcc (>= 5) or clang
