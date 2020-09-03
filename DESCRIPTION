@@ -19,7 +19,8 @@ URL: https://github.com/r-prof/procmaps,
     https://r-prof.github.io/procmaps
 BugReports: https://github.com/r-prof/procmaps/issues
 Suggests: 
-    tibble
+    tibble,
+    testthat
 SystemRequirements: GNU make, gcc (>= 5) or clang
 Encoding: UTF-8
 LazyData: true
