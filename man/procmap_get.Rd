@@ -13,6 +13,9 @@ This requires the tibble package to be installed.
 The default returns a tibble if the package is installed, otherwise a
 data frame.}
 }
+\value{
+A data frame or tibble, depending on the \code{as_tibble} argument.
+}
 \description{
 Returns the address space map of a process as a data frame.
 }
