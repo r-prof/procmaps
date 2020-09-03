@@ -1,7 +1,7 @@
 Package: procmaps
 Title: Portable Address Space Mapping
-Version: 0.0.0.9000
-Date: 2020-08-24
+Version: 0.0.1
+Date: 2020-09-03
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
