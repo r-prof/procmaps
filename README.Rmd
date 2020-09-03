@@ -1,5 +1,5 @@
 ---
-output: pkgdown::readme_document
+output: downlit::readme_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
