@@ -49,8 +49,8 @@ This is what `/proc/self/maps` looks like (on Linux) when this document is rende
 Other operating systems make this information available in other form. This package provides the equivalent as a data frame, regardless of operating system:
 
 <pre class='chroma'>
-<span class='nf'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='k'><a href='https://github.com/r-prof/procmaps'>procmaps</a></span>)
-<span class='nf'><a href='https://rdrr.io/pkg/procmaps/man/procmap_get.html'>procmap_get</a></span>()
+<span class='nf'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='k'><a href='https://r-prof.github.io/procmaps/'>procmaps</a></span>)
+<span class='nf'><a href='https://r-prof.github.io/procmaps/reference/procmap_get.html'>procmap_get</a></span>()
 <span class='c'>#&gt; Converting to tibble, mute this message with `as_tibble = TRUE`.</span>
 <span class='c'>#&gt; <span style='color: #949494;'># A tibble: 374 x 7</span></span>
 <span class='c'>#&gt;    <span style='font-weight: bold;'>from</span><span>      </span><span style='font-weight: bold;'>to</span><span>        </span><span style='font-weight: bold;'>perms</span><span> </span><span style='font-weight: bold;'>offset</span><span>  </span><span style='font-weight: bold;'>dev</span><span>   </span><span style='font-weight: bold;'>inode</span><span>    </span><span style='font-weight: bold;'>pathname</span><span>                    </span></span>
