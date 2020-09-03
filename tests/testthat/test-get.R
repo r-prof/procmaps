@@ -17,6 +17,6 @@ test_that("files exist", {
   paths <- paths[!grepl("^[[]", paths)]
   expect_equal(file.exists(paths), rep(TRUE, length(paths)))
 
-  lib_r <- grep("/libR[.]", paths)
+  lib_r <- grep("\\\\R[.]dll$|/libR[.]so$|/libR[.]dylib$", paths)
   expect_gt(length(lib_r), 0)
 })
