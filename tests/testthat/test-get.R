@@ -1,3 +1,8 @@
+test_that("error if ellipsis passed", {
+  expect_error(procmap_get(TRUE))
+  expect_error(procmap_get(bogus = TRUE))
+})
+
 test_that("returns data frame or tibble if asked", {
   expect_s3_class(procmap_get(as_tibble = TRUE), "tbl_df")
   expect_s3_class(procmap_get(as_tibble = FALSE), "data.frame")
