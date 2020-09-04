@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the address space map of a process — procmap_get • procmaps</title>
+<title>Does a path represent R's main library? — path_is_libr • procmaps</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Get the address space map of a process — procmap_get" />
-<meta property="og:description" content="Returns the address space map of a process as a data frame." />
+<meta property="og:title" content="Does a path represent R's main library? — path_is_libr" />
+<meta property="og:description" content="For a vector of paths, checks if the basename matches libR or R.
+This is useful to detect the addresses occupied by R itself." />
 
 
 
@@ -111,54 +112,69 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the address space map of a process</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-prof/procmaps/blob/master/R/get.R'><code>R/get.R</code></a></small>
-    <div class="hidden name"><code>procmap_get.Rd</code></div>
+    <h1>Does a path represent R's main library?</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-prof/procmaps/blob/master/R/is-libr.R'><code>R/is-libr.R</code></a></small>
+    <div class="hidden name"><code>path_is_libr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns the address space map of a process as a data frame.</p>
+    <p>For a vector of paths, checks if the <a href='https://rdrr.io/r/base/basename.html'>basename</a> matches <code>libR</code> or <code>R</code>.
+This is useful to detect the addresses occupied by R itself.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>procmap_get</span>(<span class='kw'>...</span>, as_tibble = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>path_is_libr</span>(<span class='kw'>path</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Reserved for future extensions, must be empty.</p></td>
-    </tr>
-    <tr>
-      <th>as_tibble</th>
-      <td><p>When using in a package, set to <code>TRUE</code> to return a
-<a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble::tibble</a>.
-This requires the tibble package to be installed.
-The default returns a tibble if the package is installed, otherwise a
-data frame.</p></td>
+      <th>path</th>
+      <td><p>A character vector of paths</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame or tibble, depending on the <code>as_tibble</code> argument.</p>
+    <p>A logical vector of the same length as <code>path</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>procmap_get</span>()
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 416 x 7</span><span>
-#&gt;    from        to         perms offset  dev   inode     pathname                
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                   
-#&gt; </span><span style='color: #555555;'> 1</span><span> 0000000000… 000000000… r-xp  000000… 00:00 </span><span style='color: #555555;'>"</span><span>4665945… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin…
-#&gt; </span><span style='color: #555555;'> 2</span><span> 0000000000… 000000000… r--p  000000… 00:00 </span><span style='color: #555555;'>"</span><span>4665945… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin…
-#&gt; </span><span style='color: #555555;'> 3</span><span> 0000000000… 000000000… rw-p  000010… 00:00 </span><span style='color: #555555;'>"</span><span>4665945… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin…
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0000000001… 000000000… rw-p  000000… 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>"</span><span>[heap]</span><span style='color: #555555;'>"</span><span>                
-#&gt; </span><span style='color: #555555;'> 5</span><span> 00007fc08c… 00007fc08… rw-p  000000… 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>""</span><span>                      
-#&gt; </span><span style='color: #555555;'> 6</span><span> 00007fc08c… 00007fc09… ---p  000000… 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>""</span><span>                      
-#&gt; </span><span style='color: #555555;'> 7</span><span> 00007fc091… 00007fc09… r-xp  000000… 00:00 </span><span style='color: #555555;'>"</span><span>4665835… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'> 8</span><span> 00007fc091… 00007fc09… ---p  000150… 00:00 </span><span style='color: #555555;'>"</span><span>4665835… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'> 9</span><span> 00007fc091… 00007fc09… r--p  000140… 00:00 </span><span style='color: #555555;'>"</span><span>4665835… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'>10</span><span> 00007fc091… 00007fc09… rw-p  000150… 00:00 </span><span style='color: #555555;'>"</span><span>4665835… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'># … with 406 more rows</span><span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='kw'>map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='procmap_get.html'>procmap_get</a></span>()
+</div><div class='output co'>#&gt; <span class='message'>Converting to tibble, mute this message with `as_tibble = TRUE`.</span></div><div class='input'><span class='fu'>path_is_libr</span>(<span class='kw'>map</span><span class='op'>$</span><span class='kw'>pathname</span>)
+</div><div class='output co'>#&gt;   [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt;  [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [193] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [229] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [289] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [301] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [337] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [349] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [361] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+#&gt; [397] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [409] FALSE FALSE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
