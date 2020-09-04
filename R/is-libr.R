@@ -11,7 +11,8 @@ rx_libr_r <- paste0(rx_libr, "|", rx_r)
 #' @return A logical vector of the same length as `path`.
 #' @export
 #' @examples
-#' path_is_libr(procmaps_get()$pathname)
+#' map <- procmap_get()
+#' path_is_libr(map$pathname)
 path_is_libr <- function(path) {
   grepl(rx_libr_r, basename(path))
 }

@@ -17,5 +17,6 @@ For a vector of paths, checks if the \link{basename} matches \code{libR} or \cod
 This is useful to detect the addresses occupied by R itself.
 }
 \examples{
-path_is_libr(procmaps_get()$pathname)
+map <- procmap_get()
+path_is_libr(map$pathname)
 }
