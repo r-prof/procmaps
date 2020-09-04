@@ -22,8 +22,8 @@ test_that("files exist", {
   paths <- paths[!grepl("^[[]", paths)]
   expect_equal(file.exists(paths), rep(TRUE, length(paths)))
 
-  lib_r <- grep("\\\\R[.]dll$|/libR[.]so$|/libR[.]dylib$|/R$", paths)
-  expect_gt(length(lib_r), 0)
+  lib_r <- path_is_libr(paths)
+  expect_gt(sum(lib_r), 0)
 })
 
 test_that("addresses are 16 hex digits long", {
