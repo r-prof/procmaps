@@ -25,3 +25,9 @@ test_that("files exist", {
   lib_r <- grep("\\\\R[.]dll$|/libR[.]so$|/libR[.]dylib$|/R$", paths)
   expect_gt(length(lib_r), 0)
 })
+
+test_that("addresses are 16 hex digits long", {
+  map <- procmap_get(as_tibble = TRUE)
+  expect_equal(grepl("[0-9a-f]{16}", map$from), rep(TRUE, nrow(map)))
+  expect_equal(grepl("[0-9a-f]{16}", map$to), rep(TRUE, nrow(map)))
+})
