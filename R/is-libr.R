@@ -1,4 +1,4 @@
-rx_libr <- paste0("libR", .Platform$dynlib.ext, "$")
+rx_libr <- paste0("(?:libR|R)", .Platform$dynlib.ext, "$")
 rx_r <- "R$"
 rx_libr_r <- paste0(rx_libr, "|", rx_r)
 
