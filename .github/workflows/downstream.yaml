@@ -37,7 +37,7 @@ jobs:
           path: this
       - uses: actions/checkout@v2
         with:
-          repo: ${{ matrix.config.downstream }}
+          repository: ${{ matrix.config.downstream }}
           path: downstream
 
       - uses: r-lib/actions/setup-r@master
