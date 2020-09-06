@@ -33,10 +33,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        - path: this
+        with:
+          path: this
       - uses: actions/checkout@v2
-        - repo: ${{ matrix.config.downstream }}
-        - path: downstream
+        with:
+          repo: ${{ matrix.config.downstream }}
+          path: downstream
 
       - uses: r-lib/actions/setup-r@master
         with:
