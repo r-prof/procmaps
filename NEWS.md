@@ -1,3 +1,9 @@
+# procmaps 0.0.1.9002 (2020-09-07)
+
+- Hard-coding dylib extension because on the Mac it's `libR.dylib` but `<package>.so`.
+- Test upstream winch package (#17).
+
+
 # procmaps 0.0.1.9001 (2020-09-04)
 
 - New `path_is_libr()` (#16).
