@@ -1,3 +1,8 @@
+# procmaps 0.0.1.9003 (2020-09-09)
+
+- Use `stringsAsFactors = FALSE` (19).
+
+
 # procmaps 0.0.1.9002 (2020-09-07)
 
 - Hard-coding dylib extension because on the Mac it's `libR.dylib` but `<package>.so`.
