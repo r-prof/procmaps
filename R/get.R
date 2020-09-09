@@ -23,7 +23,8 @@ procmap_get <- function(..., as_tibble = NULL) {
     text = lines,
     sep = "\x1f",
     header = FALSE,
-    colClasses = "character"
+    colClasses = "character",
+    stringsAsFactors = FALSE
   )
 
   # https://stackoverflow.com/a/1401595/946850
