@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">procmaps</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
       </span>
     </div>
 
@@ -120,15 +120,11 @@
     <p>Returns the address space map of a process as a data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>procmap_get</span>(<span class='kw'>...</span>, as_tibble = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>procmap_get</span>(as_tibble = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>Reserved for future extensions, must be empty.</p></td>
-    </tr>
     <tr>
       <th>as_tibble</th>
       <td><p>When using in a package, set to <code>TRUE</code> to return a
@@ -145,19 +141,19 @@ data frame.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>procmap_get</span>()
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 416 x 7</span><span>
-#&gt;    from        to         perms offset  dev   inode     pathname                
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                   
-#&gt; </span><span style='color: #555555;'> 1</span><span> 0000000000… 000000000… r-xp  000000… 00:00 </span><span style='color: #555555;'>"</span><span>1341148… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin…
-#&gt; </span><span style='color: #555555;'> 2</span><span> 0000000000… 000000000… r--p  000000… 00:00 </span><span style='color: #555555;'>"</span><span>1341148… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin…
-#&gt; </span><span style='color: #555555;'> 3</span><span> 0000000000… 000000000… rw-p  000010… 00:00 </span><span style='color: #555555;'>"</span><span>1341148… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin…
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0000000001… 000000000… rw-p  000000… 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>"</span><span>[heap]</span><span style='color: #555555;'>"</span><span>                
-#&gt; </span><span style='color: #555555;'> 5</span><span> 00007fb35f… 00007fb35… r-xp  000000… 00:00 </span><span style='color: #555555;'>"</span><span>1341038… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'> 6</span><span> 00007fb35f… 00007fb35… ---p  000150… 00:00 </span><span style='color: #555555;'>"</span><span>1341038… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'> 7</span><span> 00007fb35f… 00007fb35… r--p  000140… 00:00 </span><span style='color: #555555;'>"</span><span>1341038… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'> 8</span><span> 00007fb35f… 00007fb35… rw-p  000150… 00:00 </span><span style='color: #555555;'>"</span><span>1341038… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/mod…
-#&gt; </span><span style='color: #555555;'> 9</span><span> 00007fb35f… 00007fb35… rw-p  000000… 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>""</span><span>                      
-#&gt; </span><span style='color: #555555;'>10</span><span> 00007fb35f… 00007fb35… r-xp  000000… 00:00 </span><span style='color: #555555;'>"</span><span>55304  … </span><span style='color: #555555;'>"</span><span>/usr/lib/x86_64-linux-…
+</div><div class='output co'>#&gt; <span class='message'>Converting to tibble, mute this message with `as_tibble = TRUE`.</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 416 x 7</span><span>
+#&gt;    from      to        perms offset   dev   inode     pathname                  
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                     
+#&gt; </span><span style='color: #555555;'> 1</span><span> 00400000  00401000  r-xp  00000000 00:00 </span><span style='color: #555555;'>"</span><span>1577053… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin/e…
+#&gt; </span><span style='color: #555555;'> 2</span><span> 00600000  00601000  r--p  00000000 00:00 </span><span style='color: #555555;'>"</span><span>1577053… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin/e…
+#&gt; </span><span style='color: #555555;'> 3</span><span> 00601000  00602000  rw-p  00001000 00:00 </span><span style='color: #555555;'>"</span><span>1577053… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin/e…
+#&gt; </span><span style='color: #555555;'> 4</span><span> 025eb000  083bf000  rw-p  00000000 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>"</span><span>[heap]</span><span style='color: #555555;'>"</span><span>                  
+#&gt; </span><span style='color: #555555;'> 5</span><span> 7f343c00… 7f343c02… rw-p  00000000 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>""</span><span>                        
+#&gt; </span><span style='color: #555555;'> 6</span><span> 7f343c02… 7f344000… ---p  00000000 00:00 </span><span style='color: #555555;'>"</span><span>0      … </span><span style='color: #555555;'>""</span><span>                        
+#&gt; </span><span style='color: #555555;'> 7</span><span> 7f3441dd… 7f3441dd… r-xp  00000000 00:00 </span><span style='color: #555555;'>"</span><span>55304  … </span><span style='color: #555555;'>"</span><span>/usr/lib/x86_64-linux-gn…
+#&gt; </span><span style='color: #555555;'> 8</span><span> 7f3441dd… 7f3441fd… ---p  0000b000 00:00 </span><span style='color: #555555;'>"</span><span>55304  … </span><span style='color: #555555;'>"</span><span>/usr/lib/x86_64-linux-gn…
+#&gt; </span><span style='color: #555555;'> 9</span><span> 7f3441fd… 7f3441fd… r--p  0000a000 00:00 </span><span style='color: #555555;'>"</span><span>55304  … </span><span style='color: #555555;'>"</span><span>/usr/lib/x86_64-linux-gn…
+#&gt; </span><span style='color: #555555;'>10</span><span> 7f3441fd… 7f3441fe… rw-p  0000b000 00:00 </span><span style='color: #555555;'>"</span><span>55304  … </span><span style='color: #555555;'>"</span><span>/usr/lib/x86_64-linux-gn…
 #&gt; </span><span style='color: #555555;'># … with 406 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -170,7 +166,7 @@ data frame.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://krlmlr.info'>Kirill Müller</a>.</p>
+  <p>Developed by <a href='http://krlmlr.info'>Kirill Müller</a>, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">

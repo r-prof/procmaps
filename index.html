@@ -14,7 +14,14 @@
 <script src="pkgdown.js"></script><meta property="og:title" content="Portable Address Space Mapping">
 <meta property="og:description" content="Portable /proc/self/maps as a data frame.
     Determine which library or other region is mapped to a specific
-    address of a process.">
+    address of a process. --
+    R packages can contain native code, compiled to shared libraries at build or
+    installation time.
+    When loaded, each shared library occupies a portion of the address space of
+    the main process.
+    When only a machine instruction pointer is available (e.g. from a backtrace
+    during error inspection or profiling), the address space map determines
+    which library this instruction pointer corresponds to.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">procmaps</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
       </span>
     </div>
 
@@ -92,25 +99,25 @@
 <p>This is what <code>/proc/self/maps</code> looks like (on Linux) when this document is rendered:</p>
 <pre class="chroma">
 <span class="k">cat</span> <span class="o">/</span><span class="k">proc</span><span class="o">/</span><span class="k">self</span><span class="o">/</span><span class="k">maps</span>
-<span class="c">#&gt; 55646770b000-556467713000 r-xp 00000000 fd:01 2883652                    /bin/cat</span>
-<span class="c">#&gt; 556467912000-556467913000 r--p 00007000 fd:01 2883652                    /bin/cat</span>
-<span class="c">#&gt; 556467913000-556467914000 rw-p 00008000 fd:01 2883652                    /bin/cat</span>
-<span class="c">#&gt; 5564694da000-5564694fb000 rw-p 00000000 00:00 0                          [heap]</span>
-<span class="c">#&gt; 7f8eed2aa000-7f8eed709000 r--p 00000000 fd:01 29370411                   /usr/lib/locale/locale-archive</span>
-<span class="c">#&gt; 7f8eed709000-7f8eed8f0000 r-xp 00000000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7f8eed8f0000-7f8eedaf0000 ---p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7f8eedaf0000-7f8eedaf4000 r--p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7f8eedaf4000-7f8eedaf6000 rw-p 001eb000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7f8eedaf6000-7f8eedafa000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7f8eedafa000-7f8eedb21000 r-xp 00000000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class="c">#&gt; 7f8eedcf4000-7f8eedcf6000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7f8eedcff000-7f8eedd21000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7f8eedd21000-7f8eedd22000 r--p 00027000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class="c">#&gt; 7f8eedd22000-7f8eedd23000 rw-p 00028000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class="c">#&gt; 7f8eedd23000-7f8eedd24000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7ffcffef8000-7ffcfff1a000 rw-p 00000000 00:00 0                          [stack]</span>
-<span class="c">#&gt; 7ffcffff1000-7ffcffff4000 r--p 00000000 00:00 0                          [vvar]</span>
-<span class="c">#&gt; 7ffcffff4000-7ffcffff6000 r-xp 00000000 00:00 0                          [vdso]</span>
+<span class="c">#&gt; 55f964020000-55f964028000 r-xp 00000000 fd:01 2883652                    /bin/cat</span>
+<span class="c">#&gt; 55f964227000-55f964228000 r--p 00007000 fd:01 2883652                    /bin/cat</span>
+<span class="c">#&gt; 55f964228000-55f964229000 rw-p 00008000 fd:01 2883652                    /bin/cat</span>
+<span class="c">#&gt; 55f9659a9000-55f9659ca000 rw-p 00000000 00:00 0                          [heap]</span>
+<span class="c">#&gt; 7f90e9615000-7f90e9a74000 r--p 00000000 fd:01 29370411                   /usr/lib/locale/locale-archive</span>
+<span class="c">#&gt; 7f90e9a74000-7f90e9c5b000 r-xp 00000000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class="c">#&gt; 7f90e9c5b000-7f90e9e5b000 ---p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class="c">#&gt; 7f90e9e5b000-7f90e9e5f000 r--p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class="c">#&gt; 7f90e9e5f000-7f90e9e61000 rw-p 001eb000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class="c">#&gt; 7f90e9e61000-7f90e9e65000 rw-p 00000000 00:00 0 </span>
+<span class="c">#&gt; 7f90e9e65000-7f90e9e8c000 r-xp 00000000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
+<span class="c">#&gt; 7f90ea05f000-7f90ea061000 rw-p 00000000 00:00 0 </span>
+<span class="c">#&gt; 7f90ea06a000-7f90ea08c000 rw-p 00000000 00:00 0 </span>
+<span class="c">#&gt; 7f90ea08c000-7f90ea08d000 r--p 00027000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
+<span class="c">#&gt; 7f90ea08d000-7f90ea08e000 rw-p 00028000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
+<span class="c">#&gt; 7f90ea08e000-7f90ea08f000 rw-p 00000000 00:00 0 </span>
+<span class="c">#&gt; 7ffc05cfc000-7ffc05d1e000 rw-p 00000000 00:00 0                          [stack]</span>
+<span class="c">#&gt; 7ffc05dd5000-7ffc05dd8000 r--p 00000000 00:00 0                          [vvar]</span>
+<span class="c">#&gt; 7ffc05dd8000-7ffc05dda000 r-xp 00000000 00:00 0                          [vdso]</span>
 <span class="c">#&gt; ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]</span>
 </pre>
 <p>Other operating systems make this information available in other form. This package provides the equivalent as a data frame, regardless of operating system:</p>
@@ -119,18 +126,18 @@
 <span class="nf"><a href="https://r-prof.github.io/procmaps/reference/procmap_get.html">procmap_get</a></span>()
 <span class="c">#&gt; Converting to tibble, mute this message with `as_tibble = TRUE`.</span>
 <span class="c">#&gt; <span style="color: #949494;"># A tibble: 374 x 7</span></span>
-<span class="c">#&gt;    <span style="font-weight: bold;">from</span><span>       </span><span style="font-weight: bold;">to</span><span>         </span><span style="font-weight: bold;">perms</span><span> </span><span style="font-weight: bold;">offset</span><span>  </span><span style="font-weight: bold;">dev</span><span>   </span><span style="font-weight: bold;">inode</span><span>    </span><span style="font-weight: bold;">pathname</span><span>                  </span></span>
-<span class="c">#&gt;    <span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>      </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>      </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>   </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>    </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>                     </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 1</span><span> 000055628… 000055628… r-xp  000000… 00:00 </span><span style="color: #949494;">"</span><span>293937… /usr/lib/R/bin/exec/R     </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 2</span><span> 000055629… 000055629… r--p  000000… 00:00 </span><span style="color: #949494;">"</span><span>293937… /usr/lib/R/bin/exec/R     </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 3</span><span> 000055629… 000055629… rw-p  000010… 00:00 </span><span style="color: #949494;">"</span><span>293937… /usr/lib/R/bin/exec/R     </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 4</span><span> 000055629… 000055629… rw-p  000000… 00:00 </span><span style="color: #949494;">"</span><span>0     … [heap]                    </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 5</span><span> 00007f63e… 00007f63e… r-xp  000000… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 6</span><span> 00007f63e… 00007f63e… ---p  000030… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 7</span><span> 00007f63e… 00007f63e… r--p  000030… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 8</span><span> 00007f63e… 00007f63e… rw-p  000040… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 9</span><span> 00007f63e… 00007f63e… r-xp  000000… 00:00 </span><span style="color: #949494;">"</span><span>287226… /home/kirill/R-dev/glue/l…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;">10</span><span> 00007f63e… 00007f63e… ---p  000020… 00:00 </span><span style="color: #949494;">"</span><span>287226… /home/kirill/R-dev/glue/l…</span></span>
+<span class="c">#&gt;    <span style="font-weight: bold;">from</span><span>      </span><span style="font-weight: bold;">to</span><span>        </span><span style="font-weight: bold;">perms</span><span> </span><span style="font-weight: bold;">offset</span><span>  </span><span style="font-weight: bold;">dev</span><span>   </span><span style="font-weight: bold;">inode</span><span>    </span><span style="font-weight: bold;">pathname</span><span>                    </span></span>
+<span class="c">#&gt;    <span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>     </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>     </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>   </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>    </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>                       </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 1</span><span> 564b1579… 564b1579… r-xp  000000… 00:00 </span><span style="color: #949494;">"</span><span>293937… /usr/lib/R/bin/exec/R       </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 2</span><span> 564b1599… 564b1599… r--p  000000… 00:00 </span><span style="color: #949494;">"</span><span>293937… /usr/lib/R/bin/exec/R       </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 3</span><span> 564b1599… 564b1599… rw-p  000010… 00:00 </span><span style="color: #949494;">"</span><span>293937… /usr/lib/R/bin/exec/R       </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 4</span><span> 564b16aa… 564b1c15… rw-p  000000… 00:00 </span><span style="color: #949494;">"</span><span>0     … [heap]                      </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 5</span><span> 7fbcdc9c… 7fbcdc9c… r-xp  000000… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof/p…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 6</span><span> 7fbcdc9c… 7fbcdcbc… ---p  000030… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof/p…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 7</span><span> 7fbcdcbc… 7fbcdcbc… r--p  000030… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof/p…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 8</span><span> 7fbcdcbc… 7fbcdcbc… rw-p  000040… 00:00 </span><span style="color: #949494;">"</span><span>289787… /home/kirill/git/R/r-prof/p…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 9</span><span> 7fbcdcbc… 7fbcdcbc… r-xp  000000… 00:00 </span><span style="color: #949494;">"</span><span>287226… /home/kirill/R-dev/glue/lib…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;">10</span><span> 7fbcdcbc… 7fbcdcdc… ---p  000020… 00:00 </span><span style="color: #949494;">"</span><span>287226… /home/kirill/R-dev/glue/lib…</span></span>
 <span class="c">#&gt; <span style="color: #949494;"># … with 364 more rows</span></span>
 </pre>
 <hr>
@@ -170,6 +177,8 @@
 <ul class="list-unstyled">
 <li>
 <a href="http://krlmlr.info">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>
+<a href="https://www.r-consortium.org">R Consortium</a> <br><small class="roles"> Funder </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -188,7 +197,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://krlmlr.info">Kirill Müller</a>.</p>
+  <p>Developed by <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
