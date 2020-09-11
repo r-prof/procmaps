@@ -1,5 +1,7 @@
 procmaps 0.0.1
 
+Resubmission upon request: updated authors and description.
+
 ## Cran Repository Policy
 
 - [x] Reviewed CRP last edited 2020-07-11.
