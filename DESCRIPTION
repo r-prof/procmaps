@@ -8,12 +8,33 @@ Authors@R:
              role = c("aut", "cre"),
              email = "krlmlr+r@mailbox.org",
              comment = c(ORCID = "0000-0002-1416-3412")),
+      person(given = "R Consortium",
+             role = "fnd"),
+      person(given = "Kostya",
+             family = "Serebryany",
+             role = "ctb",
+             comment = "Bundled gperftools library"),
+      person(given = "Sanjay",
+             family = "Ghemawat",
+             role = "ctb",
+             comment = "Bundled gperftools library"),
+      person(given = "Craig",
+             family = "Silverstein",
+             role = "ctb",
+             comment = "Bundled gperftools library"),
       person(family = "Google Inc.",
              role = "cph",
              comment = "Bundled gperftools library"))
 Description: Portable '/proc/self/maps' as a data frame.
     Determine which library or other region is mapped to a specific
-    address of a process.
+    address of a process. --
+    R packages can contain native code, compiled to shared libraries at build or
+    installation time.
+    When loaded, each shared library occupies a portion of the address space of
+    the main process.
+    When only a machine instruction pointer is available (e.g. from a backtrace
+    during error inspection or profiling), the address space map determines
+    which library this instruction pointer corresponds to.
 License: GPL-3
 URL: https://r-prof.github.io/procmaps/, https://github.com/r-prof/procmaps
 BugReports: https://github.com/r-prof/procmaps/issues
