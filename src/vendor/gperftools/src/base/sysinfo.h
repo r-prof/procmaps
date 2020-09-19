@@ -172,12 +172,6 @@ class ProcMapsIterator {
   bool Next(uint64 *start, uint64 *end, char **flags,
             uint64 *offset, int64 *inode, char **filename);
 
-  bool NextExt(uint64 *start, uint64 *end, char **flags,
-               uint64 *offset, int64 *inode, char **filename,
-               uint64 *file_mapping, uint64 *file_pages,
-               uint64 *anon_mapping, uint64 *anon_pages,
-               dev_t *dev);
-
   ~ProcMapsIterator();
 
  private:

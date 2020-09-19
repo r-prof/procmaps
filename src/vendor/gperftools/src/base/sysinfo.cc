@@ -128,10 +128,7 @@ template<uint32_t kMagic, uint32_t kLCSegment,
 static bool NextExtMachHelper(const mach_header* hdr,
                               int current_image, int current_load_cmd,
                               uint64 *start, uint64 *end, char **flags,
-                              uint64 *offset, int64 *inode, char **filename,
-                              uint64 *file_mapping, uint64 *file_pages,
-                              uint64 *anon_mapping, uint64 *anon_pages,
-                              dev_t *dev) {
+                              uint64 *offset, int64 *inode, char **filename) {
   static char kDefaultPerms[5] = "r-xp";
   if (hdr->magic != kMagic)
     return false;
@@ -149,11 +146,6 @@ static bool NextExtMachHelper(const mach_header* hdr,
     if (inode) *inode = 0;
     if (filename)
       *filename = const_cast<char*>(_dyld_get_image_name(current_image));
-    if (file_mapping) *file_mapping = 0;
-    if (file_pages) *file_pages = 0;   // could we use sc->filesize?
-    if (anon_mapping) *anon_mapping = 0;
-    if (anon_pages) *anon_pages = 0;
-    if (dev) *dev = 0;
     return true;
   }
 
@@ -399,18 +391,6 @@ bool ProcMapsIterator::Valid() const {
 
 bool ProcMapsIterator::Next(uint64 *start, uint64 *end, char **flags,
                             uint64 *offset, int64 *inode, char **filename) {
-  return NextExt(start, end, flags, offset, inode, filename, NULL, NULL,
-                 NULL, NULL, NULL);
-}
-
-// This has too many arguments.  It should really be building
-// a map object and returning it.  The problem is that this is called
-// when the memory allocator state is undefined, hence the arguments.
-bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
-                               uint64 *offset, int64 *inode, char **filename,
-                               uint64 *file_mapping, uint64 *file_pages,
-                               uint64 *anon_mapping, uint64 *anon_pages,
-                               dev_t *dev) {
 
 #if defined(__linux__) || defined(__FreeBSD__) || defined(__CYGWIN__) || defined(__CYGWIN32__)
   do {
@@ -511,37 +491,6 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
     // We found an entry
     if (flags) *flags = flags_;
     if (filename) *filename = stext_ + filename_offset;
-    if (dev) *dev = minor | (major << 8);
-
-    if (using_maps_backing_) {
-      // Extract and parse physical page backing info.
-      char *backing_ptr = stext_ + filename_offset +
-          strlen(stext_+filename_offset);
-
-      // find the second '('
-      int paren_count = 0;
-      while (--backing_ptr > stext_) {
-        if (*backing_ptr == '(') {
-          ++paren_count;
-          if (paren_count >= 2) {
-            uint64 tmp_file_mapping;
-            uint64 tmp_file_pages;
-            uint64 tmp_anon_mapping;
-            uint64 tmp_anon_pages;
-
-            sscanf(backing_ptr+1, "F %" SCNx64 " %" SCNd64 ") (A %" SCNx64 " %" SCNd64 ")",
-                   file_mapping ? file_mapping : &tmp_file_mapping,
-                   file_pages ? file_pages : &tmp_file_pages,
-                   anon_mapping ? anon_mapping : &tmp_anon_mapping,
-                   anon_pages ? anon_pages : &tmp_anon_pages);
-            // null terminate the file name (there is a space
-            // before the first (.
-            backing_ptr[-1] = 0;
-            break;
-          }
-        }
-      }
-    }
 
     return true;
   } while (etext_ > ibuf_);
@@ -584,11 +533,6 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
     if (offset) *offset = mapinfo->pr_offset;
     if (inode) *inode = inode_from_mapname;
     if (filename) *filename = current_filename_;
-    if (file_mapping) *file_mapping = 0;
-    if (file_pages) *file_pages = 0;
-    if (anon_mapping) *anon_mapping = 0;
-    if (anon_pages) *anon_pages = 0;
-    if (dev) *dev = 0;
     return true;
   }
 #elif defined(__MACH__)
@@ -643,11 +587,6 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
     if (offset) *offset = 0;
     if (inode) *inode = 0;
     if (filename) *filename = module_.szExePath;
-    if (file_mapping) *file_mapping = 0;
-    if (file_pages) *file_pages = 0;
-    if (anon_mapping) *anon_mapping = 0;
-    if (anon_pages) *anon_pages = 0;
-    if (dev) *dev = 0;
     return true;
   }
 #endif
