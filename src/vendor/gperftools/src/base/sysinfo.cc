@@ -77,6 +77,37 @@
 // Re-run fn until it doesn't cause EINTR.
 #define NO_INTR(fn)  do {} while ((fn) < 0 && errno == EINTR)
 
+
+
+// from logging.cc:
+
+#if defined(_WIN32) || defined(__CYGWIN__) || defined(__CYGWIN32__)
+
+void RawWrite(RawFD handle, const char* buf, size_t len) {
+  while (len > 0) {
+    DWORD wrote;
+    BOOL ok = WriteFile(handle, buf, len, &wrote, NULL);
+    // We do not use an asynchronous file handle, so ok==false means an error
+    if (!ok) break;
+    buf += wrote;
+    len -= wrote;
+  }
+}
+
+#else  // _WIN32 || __CYGWIN__ || __CYGWIN32__
+
+void RawWrite(RawFD fd, const char* buf, size_t len) {
+  while (len > 0) {
+    ssize_t r;
+    NO_INTR(r = write(fd, buf, len));
+    if (r <= 0) break;
+    buf += r;
+    len -= r;
+  }
+}
+
+#endif  // _WIN32 || __CYGWIN__ || __CYGWIN32__
+
 // ----------------------------------------------------------------------
 
 #if defined __linux__ || defined __FreeBSD__ || defined __sun__ || defined __CYGWIN__ || defined __CYGWIN32__
@@ -695,34 +726,3 @@ void DumpProcSelfMaps(RawFD fd) {
 }
 
 }  // namespace tcmalloc
-
-
-#if defined(_WIN32) || defined(__CYGWIN__) || defined(__CYGWIN32__)
-
-void RawWrite(RawFD handle, const char* buf, size_t len) {
-  while (len > 0) {
-    DWORD wrote;
-    BOOL ok = WriteFile(handle, buf, len, &wrote, NULL);
-    // We do not use an asynchronous file handle, so ok==false means an error
-    if (!ok) break;
-    buf += wrote;
-    len -= wrote;
-  }
-}
-
-#else  // _WIN32 || __CYGWIN__ || __CYGWIN32__
-
-// Re-run fn until it doesn't cause EINTR.
-#define NO_INTR(fn)  do {} while ((fn) < 0 && errno == EINTR)
-
-void RawWrite(RawFD fd, const char* buf, size_t len) {
-  while (len > 0) {
-    ssize_t r;
-    NO_INTR(r = write(fd, buf, len));
-    if (r <= 0) break;
-    buf += r;
-    len -= r;
-  }
-}
-
-#endif  // _WIN32 || __CYGWIN__ || __CYGWIN32__
