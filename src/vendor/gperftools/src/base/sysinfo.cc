@@ -28,7 +28,6 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <config.h>
 #if (defined(_WIN32) || defined(__MINGW32__)) && !defined(__CYGWIN__) && !defined(__CYGWIN32)
 # define PLATFORM_WINDOWS 1
 #endif
@@ -39,8 +38,6 @@
 #include <string.h>   // for memmove(), memchr(), etc.
 #include <fcntl.h>    // for open()
 #include <errno.h>    // for errno
-#ifdef HAVE_UNISTD_H
-#endif
 #if defined __MACH__          // Mac OS X, almost certainly
 #include <mach-o/dyld.h>      // for iterating over dll's in ProcMapsIter
 #include <mach-o/loader.h>    // for iterating over dll's in ProcMapsIter
