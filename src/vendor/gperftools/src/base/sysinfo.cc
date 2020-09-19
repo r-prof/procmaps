@@ -54,7 +54,6 @@
 #include <tlhelp32.h>         // for Module32First()
 #endif
 #include "base/sysinfo.h"
-#include "base/commandlineflags.h"
 
 #ifdef PLATFORM_WINDOWS
 #ifdef MODULEENTRY32
