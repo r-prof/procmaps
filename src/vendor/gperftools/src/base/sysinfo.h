@@ -129,27 +129,6 @@ class ProcMapsIterator {
   // systems.  Prefer FormatLine() if that may be a concern.
   const char *CurrentLine() const { return stext_; }
 
-  // Writes the "canonical" form of the /proc/xxx/maps info for a single
-  // line to the passed-in buffer. Returns the number of bytes written,
-  // or 0 if it was not able to write the complete line.  (To guarantee
-  // success, buffer should have size at least Buffer::kBufSize.)
-  // Takes as arguments values set via a call to Next().  The
-  // "canonical" form of the line (taken from linux's /proc/xxx/maps):
-  //    <start_addr(hex)>-<end_addr(hex)> <perms(rwxp)> <offset(hex)>   +
-  //    <major_dev(hex)>:<minor_dev(hex)> <inode> <filename> Note: the
-  // eg
-  //    08048000-0804c000 r-xp 00000000 03:01 3793678    /bin/cat
-  // If you don't have the dev_t (dev), feel free to pass in 0.
-  // (Next() doesn't return a dev_t, though NextExt does.)
-  //
-  // Note: if filename and flags were obtained via a call to Next(),
-  // then the output of this function is only valid if Next() returned
-  // true, and only until the iterator is destroyed or Next() is
-  // called again.  (Since filename, at least, points into CurrentLine.)
-  static int FormatLine(char* buffer, int bufsize,
-                        uint64 start, uint64 end, const char *flags,
-                        uint64 offset, int64 inode, const char *filename,
-                        dev_t dev);
 
   // Find the next entry in /proc/maps; return true if found or false
   // if at the end of the file.
@@ -212,12 +191,5 @@ class ProcMapsIterator {
 };
 
 #endif  /* #ifndef SWIG */
-
-// Helper routines
-
-namespace tcmalloc {
-int FillProcSelfMaps(char buf[], int size, bool* wrote_all);
-void DumpProcSelfMaps(RawFD fd);
-}
 
 #endif   /* #ifndef _SYSINFO_H_ */
