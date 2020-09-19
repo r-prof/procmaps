@@ -552,18 +552,14 @@ bool ProcMapsIterator::Next(uint64 *start, uint64 *end, char **flags,
       if (NextExtMachHelper<MH_MAGIC_64, LC_SEGMENT_64,
                             struct mach_header_64, struct segment_command_64>(
                                 hdr, current_image_, current_load_cmd_,
-                                start, end, flags, offset, inode, filename,
-                                file_mapping, file_pages, anon_mapping,
-                                anon_pages, dev)) {
+                                start, end, flags, offset, inode, filename)) {
         return true;
       }
 #endif
       if (NextExtMachHelper<MH_MAGIC, LC_SEGMENT,
                             struct mach_header, struct segment_command>(
                                 hdr, current_image_, current_load_cmd_,
-                                start, end, flags, offset, inode, filename,
-                                file_mapping, file_pages, anon_mapping,
-                                anon_pages, dev)) {
+                                start, end, flags, offset, inode, filename)) {
         return true;
       }
     }
