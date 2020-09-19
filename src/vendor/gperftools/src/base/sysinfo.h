@@ -34,8 +34,6 @@
 #ifndef _SYSINFO_H_
 #define _SYSINFO_H_
 
-#include <config.h>
-
 #include <time.h>
 #if (defined(_WIN32) || defined(__MINGW32__)) && (!defined(__CYGWIN__) && !defined(__CYGWIN32__))
 #include <windows.h>   // for DWORD
