@@ -17,21 +17,8 @@ procmap_get <- function(..., as_tibble = NULL) {
     stop("... must be empty.", call. = FALSE)
   }
 
-  lines <- .Call(procmaps_c_procmap_get)
-
-  data <- utils::read.delim(
-    text = lines,
-    sep = "\x1f",
-    header = FALSE,
-    colClasses = "character",
-    stringsAsFactors = FALSE
-  )
-
-  # https://stackoverflow.com/a/1401595/946850
-  data <- data[-5]
+  data <- .Call(procmaps_c_procmap_get_df)
   names(data) <- c("from", "to", "perms", "offset", "inode", "pathname")
-
-  data$inode <- gsub(" +$", "", data$inode)
 
   as_tibble_if(data, as_tibble)
 }

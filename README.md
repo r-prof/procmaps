@@ -24,25 +24,25 @@ This is what `/proc/self/maps` looks like (on Linux) when this document is rende
 
 <pre class='chroma'>
 <span class='k'>cat</span> <span class='o'>/</span><span class='k'>proc</span><span class='o'>/</span><span class='k'>self</span><span class='o'>/</span><span class='k'>maps</span>
-<span class='c'>#&gt; 560233612000-56023361a000 r-xp 00000000 fd:01 2883652                    /bin/cat</span>
-<span class='c'>#&gt; 560233819000-56023381a000 r--p 00007000 fd:01 2883652                    /bin/cat</span>
-<span class='c'>#&gt; 56023381a000-56023381b000 rw-p 00008000 fd:01 2883652                    /bin/cat</span>
-<span class='c'>#&gt; 560234853000-560234874000 rw-p 00000000 00:00 0                          [heap]</span>
-<span class='c'>#&gt; 7fb275252000-7fb2756b1000 r--p 00000000 fd:01 29370411                   /usr/lib/locale/locale-archive</span>
-<span class='c'>#&gt; 7fb2756b1000-7fb275898000 r-xp 00000000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class='c'>#&gt; 7fb275898000-7fb275a98000 ---p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class='c'>#&gt; 7fb275a98000-7fb275a9c000 r--p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class='c'>#&gt; 7fb275a9c000-7fb275a9e000 rw-p 001eb000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class='c'>#&gt; 7fb275a9e000-7fb275aa2000 rw-p 00000000 00:00 0 </span>
-<span class='c'>#&gt; 7fb275aa2000-7fb275ac9000 r-xp 00000000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class='c'>#&gt; 7fb275c9c000-7fb275c9e000 rw-p 00000000 00:00 0 </span>
-<span class='c'>#&gt; 7fb275ca7000-7fb275cc9000 rw-p 00000000 00:00 0 </span>
-<span class='c'>#&gt; 7fb275cc9000-7fb275cca000 r--p 00027000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class='c'>#&gt; 7fb275cca000-7fb275ccb000 rw-p 00028000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class='c'>#&gt; 7fb275ccb000-7fb275ccc000 rw-p 00000000 00:00 0 </span>
-<span class='c'>#&gt; 7ffd8659b000-7ffd865bd000 rw-p 00000000 00:00 0                          [stack]</span>
-<span class='c'>#&gt; 7ffd865c8000-7ffd865cb000 r--p 00000000 00:00 0                          [vvar]</span>
-<span class='c'>#&gt; 7ffd865cb000-7ffd865cd000 r-xp 00000000 00:00 0                          [vdso]</span>
+<span class='c'>#&gt; 56390592e000-563905936000 r-xp 00000000 fd:01 2883652                    /bin/cat</span>
+<span class='c'>#&gt; 563905b35000-563905b36000 r--p 00007000 fd:01 2883652                    /bin/cat</span>
+<span class='c'>#&gt; 563905b36000-563905b37000 rw-p 00008000 fd:01 2883652                    /bin/cat</span>
+<span class='c'>#&gt; 563906bb9000-563906bda000 rw-p 00000000 00:00 0                          [heap]</span>
+<span class='c'>#&gt; 7fb42c468000-7fb42c8c7000 r--p 00000000 fd:01 29370411                   /usr/lib/locale/locale-archive</span>
+<span class='c'>#&gt; 7fb42c8c7000-7fb42caae000 r-xp 00000000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class='c'>#&gt; 7fb42caae000-7fb42ccae000 ---p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class='c'>#&gt; 7fb42ccae000-7fb42ccb2000 r--p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class='c'>#&gt; 7fb42ccb2000-7fb42ccb4000 rw-p 001eb000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
+<span class='c'>#&gt; 7fb42ccb4000-7fb42ccb8000 rw-p 00000000 00:00 0 </span>
+<span class='c'>#&gt; 7fb42ccb8000-7fb42ccdf000 r-xp 00000000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
+<span class='c'>#&gt; 7fb42ceb2000-7fb42ceb4000 rw-p 00000000 00:00 0 </span>
+<span class='c'>#&gt; 7fb42cebd000-7fb42cedf000 rw-p 00000000 00:00 0 </span>
+<span class='c'>#&gt; 7fb42cedf000-7fb42cee0000 r--p 00027000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
+<span class='c'>#&gt; 7fb42cee0000-7fb42cee1000 rw-p 00028000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
+<span class='c'>#&gt; 7fb42cee1000-7fb42cee2000 rw-p 00000000 00:00 0 </span>
+<span class='c'>#&gt; 7ffed6a9a000-7ffed6abc000 rw-p 00000000 00:00 0                          [stack]</span>
+<span class='c'>#&gt; 7ffed6b08000-7ffed6b0b000 r--p 00000000 00:00 0                          [vvar]</span>
+<span class='c'>#&gt; 7ffed6b0b000-7ffed6b0d000 r-xp 00000000 00:00 0                          [vdso]</span>
 <span class='c'>#&gt; ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]</span>
 </pre>
 
@@ -55,16 +55,16 @@ Other operating systems make this information available in other form. This pack
 <span class='c'>#&gt; <span style='color: #949494;'># A tibble: 378 x 6</span></span>
 <span class='c'>#&gt;    <span style='font-weight: bold;'>from</span><span>         </span><span style='font-weight: bold;'>to</span><span>          </span><span style='font-weight: bold;'>perms</span><span> </span><span style='font-weight: bold;'>offset</span><span>  </span><span style='font-weight: bold;'>inode</span><span>  </span><span style='font-weight: bold;'>pathname</span><span>                       </span></span>
 <span class='c'>#&gt;    <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 1</span><span> 000055ef44f… 000055ef44… r-xp  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 2</span><span> 000055ef451… 000055ef45… r--p  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 3</span><span> 000055ef451… 000055ef45… rw-p  000010… 29393… /usr/lib/R/bin/exec/R          </span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 4</span><span> 000055ef467… 000055ef4b… rw-p  000000… 0      [heap]                         </span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 5</span><span> 00007f5a460… 00007f5a46… r-xp  000000… 29024… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 6</span><span> 00007f5a460… 00007f5a46… ---p  000030… 29024… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 7</span><span> 00007f5a462… 00007f5a46… r--p  000020… 29024… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 8</span><span> 00007f5a462… 00007f5a46… rw-p  000030… 29024… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'> 9</span><span> 00007f5a462… 00007f5a46… r-xp  000000… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
-<span class='c'>#&gt; <span style='color: #BCBCBC;'>10</span><span> 00007f5a462… 00007f5a46… ---p  000020… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 1</span><span> 000055cc2db… 000055cc2d… r-xp  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 2</span><span> 000055cc2dd… 000055cc2d… r--p  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 3</span><span> 000055cc2dd… 000055cc2d… rw-p  000010… 29393… /usr/lib/R/bin/exec/R          </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 4</span><span> 000055cc2e4… 000055cc33… rw-p  000000… 0      [heap]                         </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 5</span><span> 00007f9bac9… 00007f9bac… r-xp  000000… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 6</span><span> 00007f9bac9… 00007f9bac… ---p  000040… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 7</span><span> 00007f9bacb… 00007f9bac… r--p  000030… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 8</span><span> 00007f9bacb… 00007f9bac… rw-p  000040… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'> 9</span><span> 00007f9bacb… 00007f9bac… r-xp  000000… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>10</span><span> 00007f9bacb… 00007f9bac… ---p  000020… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
 <span class='c'>#&gt; <span style='color: #949494;'># … with 368 more rows</span></span>
 </pre>
 

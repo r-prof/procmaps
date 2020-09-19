@@ -17,4 +17,54 @@ extern "C" {
     *wrote_all = wrote_all_b;
     return out;
   }
+
+  typedef void (*populate_callback) (void *data, int row, int col, int total_rows, const char*);
+  void PopulateProcSelfMapsDf(populate_callback cb, void* data) {
+    ProcMapsIterator::Buffer iterbuf;
+
+    int total_rows = 0;
+    {
+      ProcMapsIterator it(0, &iterbuf);   // 0 means "current pid"
+
+      while (it.Next(NULL, NULL, NULL, NULL, NULL, NULL)) {
+        ++total_rows;
+      }
+    }
+
+    uint64 start, end, offset;
+    int64 inode;
+    char *flags, *filename;
+    int row = 0;
+
+    ProcMapsIterator it(0, &iterbuf);   // 0 means "current pid"
+    while (it.Next(&start, &end, &flags, &offset, &inode, &filename)) {
+      char buffer[17];
+
+      sprintf(buffer, "%016" PRIx64, start);
+      cb(data, row, 0, total_rows, buffer);
+
+      sprintf(buffer, "%016" PRIx64, end);
+      cb(data, row, 1, total_rows, buffer);
+
+      // We assume 'flags' looks like 'rwxp' or 'rwx'.
+      char r = (flags && flags[0] == 'r') ? 'r' : '-';
+      char w = (flags && flags[0] && flags[1] == 'w') ? 'w' : '-';
+      char x = (flags && flags[0] && flags[1] && flags[2] == 'x') ? 'x' : '-';
+      // p always seems set on linux, so we set the default to 'p', not '-'
+      char p = (flags && flags[0] && flags[1] && flags[2] && flags[3] != 'p')
+        ? '-' : 'p';
+      sprintf(buffer, "%c%c%c%c", r, w, x, p);
+      cb(data, row, 2, total_rows, buffer);
+
+      sprintf(buffer, "%08" PRIx64, offset);
+      cb(data, row, 3, total_rows, buffer);
+
+      sprintf(buffer, "%" PRId64, inode);
+      cb(data, row, 4, total_rows, buffer);
+
+      cb(data, row, 5, total_rows, filename);
+
+      ++row;
+    }
+  }
 }
