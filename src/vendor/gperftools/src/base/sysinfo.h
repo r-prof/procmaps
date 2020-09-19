@@ -41,9 +41,6 @@
 #include <windows.h>   // for DWORD
 #include <tlhelp32.h>  // for CreateToolhelp32Snapshot
 #endif
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>    // for pid_t
-#endif
 #include <stddef.h>    // for size_t
 #include <limits.h>    // for PATH_MAX
 #include "base/basictypes.h"
