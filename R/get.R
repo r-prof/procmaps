@@ -28,7 +28,10 @@ procmap_get <- function(..., as_tibble = NULL) {
   )
 
   # https://stackoverflow.com/a/1401595/946850
-  names(data) <- c("from", "to", "perms", "offset", "dev", "inode", "pathname")
+  data <- data[-5]
+  names(data) <- c("from", "to", "perms", "offset", "inode", "pathname")
+
+  data$inode <- gsub(" +$", "", data$inode)
 
   as_tibble_if(data, as_tibble)
 }
