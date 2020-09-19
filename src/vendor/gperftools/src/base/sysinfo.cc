@@ -57,7 +57,6 @@
 #endif
 #include "base/sysinfo.h"
 #include "base/commandlineflags.h"
-#include "base/dynamic_annotations.h"   // for RunningOnValgrind
 #include "base/logging.h"
 
 #ifdef PLATFORM_WINDOWS
