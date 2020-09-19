@@ -734,16 +734,6 @@ void RawClose(RawFD handle) {
 
 #else  // _WIN32 || __CYGWIN__ || __CYGWIN32__
 
-#ifdef HAVE_SYS_TYPES_H
-#include <sys/types.h>
-#endif
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-#ifdef HAVE_FCNTL_H
-#include <fcntl.h>
-#endif
-
 // Re-run fn until it doesn't cause EINTR.
 #define NO_INTR(fn)  do {} while ((fn) < 0 && errno == EINTR)
 
