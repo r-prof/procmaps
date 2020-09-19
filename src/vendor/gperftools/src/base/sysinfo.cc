@@ -38,6 +38,7 @@
 #include <string.h>   // for memmove(), memchr(), etc.
 #include <fcntl.h>    // for open()
 #include <errno.h>    // for errno
+#include <unistd.h>   // for read()
 #if defined __MACH__          // Mac OS X, almost certainly
 #include <mach-o/dyld.h>      // for iterating over dll's in ProcMapsIter
 #include <mach-o/loader.h>    // for iterating over dll's in ProcMapsIter
