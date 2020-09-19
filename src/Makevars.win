@@ -2,7 +2,7 @@ PKG_CPPFLAGS=-Ivendor/gperftools/src
 
 all: $(SHLIB)
 
-glue.o: vendor/gperftools/src/config.h vendor/gperftools/src/base/logging.cc vendor/gperftools/src/base/sysinfo.cc
+glue.o: vendor/gperftools/src/config.h vendor/gperftools/src/base/sysinfo.cc
 
 vendor/gperftools/src/config.h: vendor/gperftools/src/config.h.win
 	cp $< $@
