@@ -11,13 +11,6 @@ void glue_abort() {
 #include "vendor/gperftools/src/base/sysinfo.cc"
 
 extern "C" {
-  int FillProcSelfMaps(char buf[], int size, int* wrote_all) {
-    bool wrote_all_b = false;
-    int out = tcmalloc::FillProcSelfMaps(buf, size, &wrote_all_b);
-    *wrote_all = wrote_all_b;
-    return out;
-  }
-
   typedef void (*populate_callback) (void *data, int row, int col, int total_rows, const char*);
   void PopulateProcSelfMapsDf(populate_callback cb, void* data) {
     ProcMapsIterator::Buffer iterbuf;
