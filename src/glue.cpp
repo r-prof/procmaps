@@ -8,8 +8,8 @@ void glue_abort() {
 
 #define glue_abort_msg Rf_error
 
-#include "vendor/gperftools/src/base/logging.cc"
 #include "vendor/gperftools/src/base/sysinfo.cc"
+#include "vendor/gperftools/src/base/logging.cc"
 
 extern "C" {
   int FillProcSelfMaps(char buf[], int size, int* wrote_all) {
