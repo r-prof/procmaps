@@ -40,7 +40,6 @@
 #include <fcntl.h>    // for open()
 #include <errno.h>    // for errno
 #ifdef HAVE_UNISTD_H
-#include <unistd.h>   // for read()
 #endif
 #if defined __MACH__          // Mac OS X, almost certainly
 #include <mach-o/dyld.h>      // for iterating over dll's in ProcMapsIter
