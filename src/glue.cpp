@@ -1,3 +1,6 @@
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
+
 extern "C" {
   extern void Rf_error(const char *str, ...);
 }
