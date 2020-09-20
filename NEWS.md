@@ -1,6 +1,13 @@
+# procmaps 0.0.1.9004 (2020-09-20)
+
+- Fix test failures on Fedora (#21).
+- `SystemRequirements` are no longer specified in `DESCRIPTION` (#22).
+- Remove configuration and unnecessary code for better portability (#20).
+
+
 # procmaps 0.0.1.9003 (2020-09-09)
 
-- Use `stringsAsFactors = FALSE` (19).
+- Use `stringsAsFactors = FALSE` (#19).
 
 
 # procmaps 0.0.1.9002 (2020-09-07)
