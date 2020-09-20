@@ -4,7 +4,7 @@ as_tibble_if <- function(data, as_tibble) {
   if (isTRUE(as_tibble)) {
     tibble::as_tibble(data)
   } else {
-    data
+    as.data.frame(data)
   }
 }
 

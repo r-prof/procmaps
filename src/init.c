@@ -7,10 +7,10 @@
 #include <R_ext/Visibility.h>
 #define export attribute_visible extern
 
-extern SEXP procmaps_procmap_get();
+extern SEXP procmaps_procmap_get_df();
 
 static const R_CallMethodDef CallEntries[] = {
-  {"procmaps_c_procmap_get",                 (DL_FUNC) &procmaps_procmap_get, 0},
+  {"procmaps_c_procmap_get_df",              (DL_FUNC) &procmaps_procmap_get_df, 0},
 
   {NULL, NULL, 0}
 };

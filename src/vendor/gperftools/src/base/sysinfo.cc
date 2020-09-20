@@ -1,11 +1,11 @@
 // -*- Mode: C++; c-basic-offset: 2; indent-tabs-mode: nil -*-
 // Copyright (c) 2006, Google Inc.
 // All rights reserved.
-// 
+//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
 // met:
-// 
+//
 //     * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 //     * Redistributions in binary form must reproduce the above
@@ -15,7 +15,7 @@
 //     * Neither the name of Google Inc. nor the names of its
 // contributors may be used to endorse or promote products derived from
 // this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -28,7 +28,6 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <config.h>
 #if (defined(_WIN32) || defined(__MINGW32__)) && !defined(__CYGWIN__) && !defined(__CYGWIN32)
 # define PLATFORM_WINDOWS 1
 #endif
@@ -39,9 +38,7 @@
 #include <string.h>   // for memmove(), memchr(), etc.
 #include <fcntl.h>    // for open()
 #include <errno.h>    // for errno
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>   // for read()
-#endif
 #if defined __MACH__          // Mac OS X, almost certainly
 #include <mach-o/dyld.h>      // for iterating over dll's in ProcMapsIter
 #include <mach-o/loader.h>    // for iterating over dll's in ProcMapsIter
@@ -57,9 +54,6 @@
 #include <tlhelp32.h>         // for Module32First()
 #endif
 #include "base/sysinfo.h"
-#include "base/commandlineflags.h"
-#include "base/dynamic_annotations.h"   // for RunningOnValgrind
-#include "base/logging.h"
 
 #ifdef PLATFORM_WINDOWS
 #ifdef MODULEENTRY32
@@ -83,6 +77,8 @@
 // Re-run fn until it doesn't cause EINTR.
 #define NO_INTR(fn)  do {} while ((fn) < 0 && errno == EINTR)
 
+
+
 // ----------------------------------------------------------------------
 
 #if defined __linux__ || defined __FreeBSD__ || defined __sun__ || defined __CYGWIN__ || defined __CYGWIN32__
@@ -103,10 +99,7 @@ template<uint32_t kMagic, uint32_t kLCSegment,
 static bool NextExtMachHelper(const mach_header* hdr,
                               int current_image, int current_load_cmd,
                               uint64 *start, uint64 *end, char **flags,
-                              uint64 *offset, int64 *inode, char **filename,
-                              uint64 *file_mapping, uint64 *file_pages,
-                              uint64 *anon_mapping, uint64 *anon_pages,
-                              dev_t *dev) {
+                              uint64 *offset, int64 *inode, char **filename) {
   static char kDefaultPerms[5] = "r-xp";
   if (hdr->magic != kMagic)
     return false;
@@ -124,11 +117,6 @@ static bool NextExtMachHelper(const mach_header* hdr,
     if (inode) *inode = 0;
     if (filename)
       *filename = const_cast<char*>(_dyld_get_image_name(current_image));
-    if (file_mapping) *file_mapping = 0;
-    if (file_pages) *file_pages = 0;   // could we use sc->filesize?
-    if (anon_mapping) *anon_mapping = 0;
-    if (anon_pages) *anon_pages = 0;
-    if (dev) *dev = 0;
     return true;
   }
 
@@ -136,6 +124,7 @@ static bool NextExtMachHelper(const mach_header* hdr,
 }
 #endif
 
+#if defined(__linux__)
 // Finds |c| in |text|, and assign '\0' at the found position.
 // The original character at the modified position should be |c|.
 // A pointer to the modified position is stored in |endptr|.
@@ -237,7 +226,6 @@ static bool ParseProcMapsLine(char *text, uint64 *start, uint64 *end,
                               char *flags, uint64 *offset,
                               int *major, int *minor, int64 *inode,
                               unsigned *filename_offset) {
-#if defined(__linux__)
   /*
    * It's similar to:
    * sscanf(text, "%"SCNx64"-%"SCNx64" %4s %"SCNx64" %x:%x %"SCNd64" %n",
@@ -270,10 +258,8 @@ static bool ParseProcMapsLine(char *text, uint64 *start, uint64 *end,
 
   *filename_offset = (endptr - text);
   return true;
-#else
-  return false;
-#endif
 }
+#endif
 
 ProcMapsIterator::ProcMapsIterator(pid_t pid) {
   Init(pid, NULL, false);
@@ -374,18 +360,6 @@ bool ProcMapsIterator::Valid() const {
 
 bool ProcMapsIterator::Next(uint64 *start, uint64 *end, char **flags,
                             uint64 *offset, int64 *inode, char **filename) {
-  return NextExt(start, end, flags, offset, inode, filename, NULL, NULL,
-                 NULL, NULL, NULL);
-}
-
-// This has too many arguments.  It should really be building
-// a map object and returning it.  The problem is that this is called
-// when the memory allocator state is undefined, hence the arguments.
-bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
-                               uint64 *offset, int64 *inode, char **filename,
-                               uint64 *file_mapping, uint64 *file_pages,
-                               uint64 *anon_mapping, uint64 *anon_pages,
-                               dev_t *dev) {
 
 #if defined(__linux__) || defined(__FreeBSD__) || defined(__CYGWIN__) || defined(__CYGWIN32__)
   do {
@@ -486,37 +460,6 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
     // We found an entry
     if (flags) *flags = flags_;
     if (filename) *filename = stext_ + filename_offset;
-    if (dev) *dev = minor | (major << 8);
-
-    if (using_maps_backing_) {
-      // Extract and parse physical page backing info.
-      char *backing_ptr = stext_ + filename_offset +
-          strlen(stext_+filename_offset);
-
-      // find the second '('
-      int paren_count = 0;
-      while (--backing_ptr > stext_) {
-        if (*backing_ptr == '(') {
-          ++paren_count;
-          if (paren_count >= 2) {
-            uint64 tmp_file_mapping;
-            uint64 tmp_file_pages;
-            uint64 tmp_anon_mapping;
-            uint64 tmp_anon_pages;
-
-            sscanf(backing_ptr+1, "F %" SCNx64 " %" SCNd64 ") (A %" SCNx64 " %" SCNd64 ")",
-                   file_mapping ? file_mapping : &tmp_file_mapping,
-                   file_pages ? file_pages : &tmp_file_pages,
-                   anon_mapping ? anon_mapping : &tmp_anon_mapping,
-                   anon_pages ? anon_pages : &tmp_anon_pages);
-            // null terminate the file name (there is a space
-            // before the first (.
-            backing_ptr[-1] = 0;
-            break;
-          }
-        }
-      }
-    }
 
     return true;
   } while (etext_ > ibuf_);
@@ -559,11 +502,6 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
     if (offset) *offset = mapinfo->pr_offset;
     if (inode) *inode = inode_from_mapname;
     if (filename) *filename = current_filename_;
-    if (file_mapping) *file_mapping = 0;
-    if (file_pages) *file_pages = 0;
-    if (anon_mapping) *anon_mapping = 0;
-    if (anon_pages) *anon_pages = 0;
-    if (dev) *dev = 0;
     return true;
   }
 #elif defined(__MACH__)
@@ -583,18 +521,14 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
       if (NextExtMachHelper<MH_MAGIC_64, LC_SEGMENT_64,
                             struct mach_header_64, struct segment_command_64>(
                                 hdr, current_image_, current_load_cmd_,
-                                start, end, flags, offset, inode, filename,
-                                file_mapping, file_pages, anon_mapping,
-                                anon_pages, dev)) {
+                                start, end, flags, offset, inode, filename)) {
         return true;
       }
 #endif
       if (NextExtMachHelper<MH_MAGIC, LC_SEGMENT,
                             struct mach_header, struct segment_command>(
                                 hdr, current_image_, current_load_cmd_,
-                                start, end, flags, offset, inode, filename,
-                                file_mapping, file_pages, anon_mapping,
-                                anon_pages, dev)) {
+                                start, end, flags, offset, inode, filename)) {
         return true;
       }
     }
@@ -618,11 +552,6 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
     if (offset) *offset = 0;
     if (inode) *inode = 0;
     if (filename) *filename = module_.szExePath;
-    if (file_mapping) *file_mapping = 0;
-    if (file_pages) *file_pages = 0;
-    if (anon_mapping) *anon_mapping = 0;
-    if (anon_pages) *anon_pages = 0;
-    if (dev) *dev = 0;
     return true;
   }
 #endif
@@ -630,74 +559,3 @@ bool ProcMapsIterator::NextExt(uint64 *start, uint64 *end, char **flags,
   // We didn't find anything
   return false;
 }
-
-int ProcMapsIterator::FormatLine(char* buffer, int bufsize,
-                                 uint64 start, uint64 end, const char *flags,
-                                 uint64 offset, int64 inode,
-                                 const char *filename, dev_t dev) {
-  // We assume 'flags' looks like 'rwxp' or 'rwx'.
-  char r = (flags && flags[0] == 'r') ? 'r' : '-';
-  char w = (flags && flags[0] && flags[1] == 'w') ? 'w' : '-';
-  char x = (flags && flags[0] && flags[1] && flags[2] == 'x') ? 'x' : '-';
-  // p always seems set on linux, so we set the default to 'p', not '-'
-  char p = (flags && flags[0] && flags[1] && flags[2] && flags[3] != 'p')
-      ? '-' : 'p';
-
-  const int rc = snprintf(buffer, bufsize,
-                          "%016" PRIx64 "\x1f%016" PRIx64 "\x1f%c%c%c%c\x1f%08" PRIx64 "\x1f%02x:%02x\x1f%-11" PRId64 "\x1f%s\n",
-                          start, end, r,w,x,p, offset,
-                          static_cast<int>(dev/256), static_cast<int>(dev%256),
-                          inode, filename);
-  return (rc < 0 || rc >= bufsize) ? 0 : rc;
-}
-
-namespace tcmalloc {
-
-// Helper to add the list of mapped shared libraries to a profile.
-// Fill formatted "/proc/self/maps" contents into buffer 'buf' of size 'size'
-// and return the actual size occupied in 'buf'.  We fill wrote_all to true
-// if we successfully wrote all proc lines to buf, false else.
-// We do not provision for 0-terminating 'buf'.
-int FillProcSelfMaps(char buf[], int size, bool* wrote_all) {
-  ProcMapsIterator::Buffer iterbuf;
-  ProcMapsIterator it(0, &iterbuf);   // 0 means "current pid"
-
-  uint64 start, end, offset;
-  int64 inode;
-  char *flags, *filename;
-  int bytes_written = 0;
-  *wrote_all = true;
-  while (it.Next(&start, &end, &flags, &offset, &inode, &filename)) {
-    const int line_length = it.FormatLine(buf + bytes_written,
-                                          size - bytes_written,
-                                          start, end, flags, offset,
-                                          inode, filename, 0);
-    if (line_length == 0)
-      *wrote_all = false;     // failed to write this line out
-    else
-      bytes_written += line_length;
-
-  }
-  return bytes_written;
-}
-
-// Dump the same data as FillProcSelfMaps reads to fd.
-// It seems easier to repeat parts of FillProcSelfMaps here than to
-// reuse it via a call.
-void DumpProcSelfMaps(RawFD fd) {
-  ProcMapsIterator::Buffer iterbuf;
-  ProcMapsIterator it(0, &iterbuf);   // 0 means "current pid"
-
-  uint64 start, end, offset;
-  int64 inode;
-  char *flags, *filename;
-  ProcMapsIterator::Buffer linebuf;
-  while (it.Next(&start, &end, &flags, &offset, &inode, &filename)) {
-    int written = it.FormatLine(linebuf.buf_, sizeof(linebuf.buf_),
-                                start, end, flags, offset, inode, filename,
-                                0);
-    RawWrite(fd, linebuf.buf_, written);
-  }
-}
-
-}  // namespace tcmalloc

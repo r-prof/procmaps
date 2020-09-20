@@ -1,11 +1,11 @@
 // -*- Mode: C++; c-basic-offset: 2; indent-tabs-mode: nil -*-
 // Copyright (c) 2006, Google Inc.
 // All rights reserved.
-// 
+//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
 // met:
-// 
+//
 //     * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 //     * Redistributions in binary form must reproduce the above
@@ -15,7 +15,7 @@
 //     * Neither the name of Google Inc. nor the names of its
 // contributors may be used to endorse or promote products derived from
 // this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -34,15 +34,10 @@
 #ifndef _SYSINFO_H_
 #define _SYSINFO_H_
 
-#include <config.h>
-
 #include <time.h>
 #if (defined(_WIN32) || defined(__MINGW32__)) && (!defined(__CYGWIN__) && !defined(__CYGWIN32__))
 #include <windows.h>   // for DWORD
 #include <tlhelp32.h>  // for CreateToolhelp32Snapshot
-#endif
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>    // for pid_t
 #endif
 #include <stddef.h>    // for size_t
 #include <limits.h>    // for PATH_MAX
@@ -55,7 +50,7 @@
 // routines that run before main(), when the state required for getenv() may
 // not be set up yet.  In particular, errno isn't set up until relatively late
 // (after the pthreads library has a chance to make it threadsafe), and
-// getenv() doesn't work until then. 
+// getenv() doesn't work until then.
 // On some platforms, this call will utilize the same, static buffer for
 // repeated GetenvBeforeMain() calls. Callers should not expect pointers from
 // this routine to be long lived.
@@ -132,27 +127,6 @@ class ProcMapsIterator {
   // systems.  Prefer FormatLine() if that may be a concern.
   const char *CurrentLine() const { return stext_; }
 
-  // Writes the "canonical" form of the /proc/xxx/maps info for a single
-  // line to the passed-in buffer. Returns the number of bytes written,
-  // or 0 if it was not able to write the complete line.  (To guarantee
-  // success, buffer should have size at least Buffer::kBufSize.)
-  // Takes as arguments values set via a call to Next().  The
-  // "canonical" form of the line (taken from linux's /proc/xxx/maps):
-  //    <start_addr(hex)>-<end_addr(hex)> <perms(rwxp)> <offset(hex)>   +
-  //    <major_dev(hex)>:<minor_dev(hex)> <inode> <filename> Note: the
-  // eg
-  //    08048000-0804c000 r-xp 00000000 03:01 3793678    /bin/cat
-  // If you don't have the dev_t (dev), feel free to pass in 0.
-  // (Next() doesn't return a dev_t, though NextExt does.)
-  //
-  // Note: if filename and flags were obtained via a call to Next(),
-  // then the output of this function is only valid if Next() returned
-  // true, and only until the iterator is destroyed or Next() is
-  // called again.  (Since filename, at least, points into CurrentLine.)
-  static int FormatLine(char* buffer, int bufsize,
-                        uint64 start, uint64 end, const char *flags,
-                        uint64 offset, int64 inode, const char *filename,
-                        dev_t dev);
 
   // Find the next entry in /proc/maps; return true if found or false
   // if at the end of the file.
@@ -174,12 +148,6 @@ class ProcMapsIterator {
   // TODO(csilvers): make flags and filename const.
   bool Next(uint64 *start, uint64 *end, char **flags,
             uint64 *offset, int64 *inode, char **filename);
-
-  bool NextExt(uint64 *start, uint64 *end, char **flags,
-               uint64 *offset, int64 *inode, char **filename,
-               uint64 *file_mapping, uint64 *file_pages,
-               uint64 *anon_mapping, uint64 *anon_pages,
-               dev_t *dev);
 
   ~ProcMapsIterator();
 
@@ -221,12 +189,5 @@ class ProcMapsIterator {
 };
 
 #endif  /* #ifndef SWIG */
-
-// Helper routines
-
-namespace tcmalloc {
-int FillProcSelfMaps(char buf[], int size, bool* wrote_all);
-void DumpProcSelfMaps(RawFD fd);
-}
 
 #endif   /* #ifndef _SYSINFO_H_ */
