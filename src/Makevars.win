@@ -1,5 +1,0 @@
-PKG_CPPFLAGS=-Ivendor/gperftools/src
-
-all: $(SHLIB)
-
-glue.o: vendor/gperftools/src/base/sysinfo.cc
