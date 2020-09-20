@@ -22,6 +22,7 @@ test_that("files exist", {
   paths <- paths[!grepl("^[[]", paths)]
   expect_equal(file.exists(paths), rep(TRUE, length(paths)))
 
+  skip_on_cran()
   lib_r <- path_is_libr(paths)
   expect_gt(sum(lib_r), 0)
 })
