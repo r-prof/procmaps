@@ -1,3 +1,8 @@
+# procmaps 0.0.2 (2020-09-20)
+
+- Same as previous version.
+
+
 # procmaps 0.0.1.9004 (2020-09-20)
 
 - Fix test failures on Fedora (#21).
