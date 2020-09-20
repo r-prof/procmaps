@@ -1,6 +1,4 @@
-procmaps 0.0.1
-
-Resubmission upon request: updated authors and description.
+procmaps 0.0.2
 
 ## Cran Repository Policy
 
@@ -9,9 +7,17 @@ Resubmission upon request: updated authors and description.
 ## R CMD check results
 
 - [x] Checked locally, R 4.0.2
-- [x] Checked on CI system, R 4.0.2
-- [x] Checked on win-builder, R devel
+- [ ] Checked on CI system, R 4.0.2
+- [ ] Checked on win-builder, R devel
+
+Check the boxes above after successful execution and remove this line. Then run `fledge::release()`.
 
 ## Current CRAN check results
 
-Initial release.
+- [x] Checked on 2020-09-20, problems found: https://cran.r-project.org/web/checks/check_results_procmaps.html
+- [ ] NOTE: r-devel-linux-x86_64-fedora-clang, r-devel-linux-x86_64-fedora-gcc, r-release-macos-x86_64, r-oldrel-macos-x86_64
+- [ ] ERROR: r-devel-linux-x86_64-fedora-clang, r-devel-linux-x86_64-fedora-gcc
+- [ ] ERROR: r-patched-solaris-x86
+- [ ] WARN: r-oldrel-windows-ix86+x86_64
+
+Check results at: https://cran.r-project.org/web/checks/check_results_procmaps.html
