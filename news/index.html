@@ -118,49 +118,29 @@
 <h1 class="page-header" data-toc-text="0.0.2">
 <a href="#procmaps-002-2020-09-20" class="anchor"></a>procmaps 0.0.2 (2020-09-20)<small> Unreleased </small>
 </h1>
-<ul>
-<li>Same as previous version.</li>
-</ul>
-</div>
-    <div id="procmaps-0019004-2020-09-20" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1.9004">
-<a href="#procmaps-0019004-2020-09-20" class="anchor"></a>procmaps 0.0.1.9004 (2020-09-20)<small> Unreleased </small>
-</h1>
+<div id="portability" class="section level2">
+<h2 class="hasAnchor">
+<a href="#portability" class="anchor"></a>Portability</h2>
 <ul>
 <li>Fix test failures on Fedora (<a href='https://github.com/r-prof/procmaps/issues/21'>#21</a>).</li>
 <li>
 <code>SystemRequirements</code> are no longer specified in <code>DESCRIPTION</code> (<a href='https://github.com/r-prof/procmaps/issues/22'>#22</a>).</li>
 <li>Remove configuration and unnecessary code for better portability (<a href='https://github.com/r-prof/procmaps/issues/20'>#20</a>).</li>
+<li>Hard-coding dylib extension because on the Mac it’s <code>libR.dylib</code> but <code>&lt;package&gt;.so</code>.</li>
+<li>Fix tests on Solaris which seems to have statically linked <code>libR</code> (<a href='https://github.com/r-prof/procmaps/issues/14'>#14</a>).</li>
 </ul>
 </div>
-    <div id="procmaps-0019003-2020-09-09" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1.9003">
-<a href="#procmaps-0019003-2020-09-09" class="anchor"></a>procmaps 0.0.1.9003 (2020-09-09)<small> Unreleased </small>
-</h1>
+<div id="features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#features" class="anchor"></a>Features</h2>
 <ul>
 <li>Use <code>stringsAsFactors = FALSE</code> (<a href='https://github.com/r-prof/procmaps/issues/19'>#19</a>).</li>
-</ul>
-</div>
-    <div id="procmaps-0019002-2020-09-07" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1.9002">
-<a href="#procmaps-0019002-2020-09-07" class="anchor"></a>procmaps 0.0.1.9002 (2020-09-07)<small> Unreleased </small>
-</h1>
-<ul>
-<li>Hard-coding dylib extension because on the Mac it’s <code>libR.dylib</code> but <code>&lt;package&gt;.so</code>.</li>
-<li>Test upstream winch package (<a href='https://github.com/r-prof/procmaps/issues/17'>#17</a>).</li>
-</ul>
-</div>
-    <div id="procmaps-0019001-2020-09-04" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1.9001">
-<a href="#procmaps-0019001-2020-09-04" class="anchor"></a>procmaps 0.0.1.9001 (2020-09-04)<small> Unreleased </small>
-</h1>
-<ul>
 <li>New <code><a href="../reference/path_is_libr.html">path_is_libr()</a></code> (<a href='https://github.com/r-prof/procmaps/issues/16'>#16</a>).</li>
 <li>Addresses are returned as 16-digit hex numbers (<a href='https://github.com/r-prof/procmaps/issues/15'>#15</a>).</li>
-<li>Fix tests on Solaris which seems to have statically linked <code>libR</code> (<a href='https://github.com/r-prof/procmaps/issues/14'>#14</a>).</li>
 <li>
 <code><a href="../reference/procmap_get.html">procmap_get()</a></code> gets ellipsis argument for extensibility (<a href='https://github.com/r-prof/procmaps/issues/13'>#13</a>).</li>
 </ul>
+</div>
 </div>
     <div id="procmaps-0019000-2020-09-03" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.1.9000">
