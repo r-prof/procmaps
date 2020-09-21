@@ -14,6 +14,11 @@ test_that("column data types", {
   classes <- unname(lapply(map, class))
   top_class <- vapply(classes, `[[`, 1, FUN.VALUE = character(1))
   expect_equal(top_class, rep("character", length(top_class)))
+
+  map <- procmap_get(as_tibble = FALSE)
+  classes <- unname(lapply(map, class))
+  top_class <- vapply(classes, `[[`, 1, FUN.VALUE = character(1))
+  expect_equal(top_class, rep("character", length(top_class)))
 })
 
 test_that("files exist", {
