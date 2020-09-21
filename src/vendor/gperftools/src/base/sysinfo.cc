@@ -464,12 +464,9 @@ bool ProcMapsIterator::Next(uint64 *start, uint64 *end, char **flags,
     return true;
   } while (etext_ > ibuf_);
 #elif defined(__sun__)
-  // This is based on MA_READ == 4, MA_WRITE == 2, MA_EXEC == 1
+  // Translation to MA_READ == 4, MA_WRITE == 2, MA_EXEC == 1 is done separately
   static char kPerms[8][4] = { "---", "--x", "-w-", "-wx",
                                "r--", "r-x", "rw-", "rwx" };
-  COMPILE_ASSERT(MA_READ == 4, solaris_ma_read_must_equal_4);
-  COMPILE_ASSERT(MA_WRITE == 2, solaris_ma_write_must_equal_2);
-  COMPILE_ASSERT(MA_EXEC == 1, solaris_ma_exec_must_equal_1);
   Buffer object_path;
   int nread = 0;            // fill up buffer with text
   NO_INTR(nread = read(fd_, ibuf_, sizeof(prmap_t)));
@@ -498,7 +495,14 @@ bool ProcMapsIterator::Next(uint64 *start, uint64 *end, char **flags,
 
     if (start) *start = mapinfo->pr_vaddr;
     if (end) *end = mapinfo->pr_vaddr + mapinfo->pr_size;
-    if (flags) *flags = kPerms[mapinfo->pr_mflags & 7];
+    if (flags) {
+      int mflags =
+        (mapinfo->pr_mflags & MA_READ) ? 4 : 0 |
+        (mapinfo->pr_mflags & MA_WRITE) ? 2 : 0 |
+        (mapinfo->pr_mflags & MA_EXEC) ? 1 : 0;
+
+      *flags = kPerms[mflags];
+    }
     if (offset) *offset = mapinfo->pr_offset;
     if (inode) *inode = inode_from_mapname;
     if (filename) *filename = current_filename_;
