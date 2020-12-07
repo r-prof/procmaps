@@ -80,12 +80,6 @@ This is useful to detect the addresses occupied by R itself." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -122,7 +116,7 @@ This is useful to detect the addresses occupied by R itself." />
 This is useful to detect the addresses occupied by R itself.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>path_is_libr</span>(<span class='kw'>path</span>)</pre>
+    <pre class="usage"><span class='fu'>path_is_libr</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,8 +132,8 @@ This is useful to detect the addresses occupied by R itself.</p>
     <p>A logical vector of the same length as <code>path</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='procmap_get.html'>procmap_get</a></span>()
-</div><div class='output co'>#&gt; <span class='message'>Converting to tibble, mute this message with `as_tibble = TRUE`.</span></div><div class='input'><span class='fu'>path_is_libr</span>(<span class='kw'>map</span><span class='op'>$</span><span class='kw'>pathname</span>)
+    <pre class="examples"><div class='input'><span class='va'>map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='procmap_get.html'>procmap_get</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Converting to tibble, mute this message with `as_tibble = TRUE`.</span></div><div class='input'><span class='fu'>path_is_libr</span><span class='op'>(</span><span class='va'>map</span><span class='op'>$</span><span class='va'>pathname</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt;  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt;  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -172,9 +166,11 @@ This is useful to detect the addresses occupied by R itself.</p>
 #&gt; [349] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt; [361] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt; [373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-#&gt; [385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+#&gt; [385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt; [397] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-#&gt; [409] FALSE FALSE FALSE</div></pre>
+#&gt; [409] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+#&gt; [421]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+#&gt; [433] FALSE FALSE FALSE FALSE FALSE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
