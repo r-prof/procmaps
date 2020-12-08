@@ -8,11 +8,6 @@
 - Fix compilation on Solaris (#25).
 
 
-# procmaps 0.0.2.9000 (2020-09-20)
-
-- Internal changes only.
-
-
 # procmaps 0.0.2 (2020-09-20)
 
 ## Portability
