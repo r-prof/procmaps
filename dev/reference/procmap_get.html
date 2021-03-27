@@ -151,18 +151,18 @@ data frame.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>procmap_get</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 492 x 6</span><span>
-#&gt;    from           to             perms offset  inode  pathname                  
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 000055bdc1bd0… 000055bdc1bd1… r-xp  000000… 72463… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 000055bdc1dd0… 000055bdc1dd1… r--p  000000… 72463… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 000055bdc1dd1… 000055bdc1dd2… rw-p  000010… 72463… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 000055bdc2e95… 000055bdc8f61… rw-p  000000… 0      </span><span style='color: #949494;'>"</span><span>[heap]</span><span style='color: #949494;'>"</span><span>                  
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 00007f3294000… 00007f3294021… rw-p  000000… 0      </span><span style='color: #949494;'>""</span><span>                        
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 00007f3294021… 00007f3298000… ---p  000000… 0      </span><span style='color: #949494;'>""</span><span>                        
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 00007f32980e5… 00007f32980fa… r-xp  000000… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 00007f32980fa… 00007f32982f9… ---p  000150… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 00007f32982f9… 00007f32982fa… r--p  000140… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 00007f32982fa… 00007f32982fb… rw-p  000150… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…
+#&gt;    from          to            perms offset  inode  pathname                    
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 0000563f5d5d… 0000563f5d5d… r-xp  000000… 72463… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 0000563f5d7d… 0000563f5d7d… r--p  000000… 72463… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 0000563f5d7d… 0000563f5d7d… rw-p  000010… 72463… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 0000563f5f2f… 0000563f653d… rw-p  000000… 0      </span><span style='color: #949494;'>"</span><span>[heap]</span><span style='color: #949494;'>"</span><span>                    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 00007f4b6207… 00007f4b6208… r-xp  000000… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 00007f4b6208… 00007f4b6228… ---p  000150… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 00007f4b6228… 00007f4b6228… r--p  000140… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 00007f4b6228… 00007f4b6228… rw-p  000150… 72467… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 00007f4b6228… 00007f4b6239… rw-p  000000… 0      </span><span style='color: #949494;'>""</span><span>                          
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 00007f4b6239… 00007f4b6239… r-xp  000000… 87301  </span><span style='color: #949494;'>"</span><span>/usr/lib/x86_64-linux-gnu/…
 #&gt; </span><span style='color: #949494;'># … with 482 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -175,7 +175,7 @@ data frame.</p></td>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
 </div>
 
 <div class="pkgdown">
