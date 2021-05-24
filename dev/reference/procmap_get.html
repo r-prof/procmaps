@@ -58,8 +58,6 @@
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -125,7 +123,7 @@
     <p>Returns the address space map of a process as a data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>procmap_get</span><span class='op'>(</span><span class='va'>...</span>, as_tibble <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>procmap_get</span><span class='op'>(</span><span class='va'>...</span>, as_tibble <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,21 +147,22 @@ data frame.</p></td>
     <p>A data frame or tibble, depending on the <code>as_tibble</code> argument.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>procmap_get</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 492 x 6</span><span>
-#&gt;    from          to            perms offset  inode  pathname                    
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 000056409c91… 000056409c91… r-xp  000000… 20832… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 000056409cb1… 000056409cb1… r--p  000000… 20832… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 000056409cb1… 000056409cb1… rw-p  000010… 20832… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 000056409dc0… 00005640a3d4… rw-p  000000… 0      </span><span style='color: #949494;'>"</span><span>[heap]</span><span style='color: #949494;'>"</span><span>                    
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 00007fb2a607… 00007fb2a608… r-xp  000000… 20841… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 00007fb2a608… 00007fb2a628… ---p  000150… 20841… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 00007fb2a628… 00007fb2a628… r--p  000140… 20841… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 00007fb2a628… 00007fb2a628… rw-p  000150… 20841… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/interne…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 00007fb2a628… 00007fb2a639… rw-p  000000… 0      </span><span style='color: #949494;'>""</span><span>                          
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 00007fb2a639… 00007fb2a639… r-xp  000000… 87168  </span><span style='color: #949494;'>"</span><span>/usr/lib/x86_64-linux-gnu/…
-#&gt; </span><span style='color: #949494;'># … with 482 more rows</span><span></div></span></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>procmap_get</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 492 x 6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    from           to             perms offset  inode  pathname                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> 000056229a85c… 000056229a85d… r-xp  000000… 530622 </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> 000056229aa5c… 000056229aa5d… r--p  000000… 530622 </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> 000056229aa5d… 000056229aa5e… rw-p  000010… 530622 </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> 000056229acd1… 00005622a0c4c… rw-p  000000… 0      </span><span style='color: #949494;'>"</span><span>[heap]</span><span style='color: #949494;'>"</span><span>                  </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> 00007fd63c000… 00007fd63c021… rw-p  000000… 0      </span><span style='color: #949494;'>""</span><span>                        </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> 00007fd63c021… 00007fd640000… ---p  000000… 0      </span><span style='color: #949494;'>""</span><span>                        </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> 00007fd640d3d… 00007fd640d52… r-xp  000000… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> 00007fd640d52… 00007fd640f51… ---p  000150… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> 00007fd640f51… 00007fd640f52… r--p  000140… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> 00007fd640f52… 00007fd640f53… rw-p  000150… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 482 more rows</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
