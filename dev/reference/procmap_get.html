@@ -58,7 +58,6 @@
 
 
 
-
   
 
   
@@ -148,20 +147,20 @@ data frame.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>procmap_get</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 492 x 6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 499 × 6</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    from           to             perms offset  inode  pathname                  </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> 000056229a85c… 000056229a85d… r-xp  000000… 530622 </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> 000056229aa5c… 000056229aa5d… r--p  000000… 530622 </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> 000056229aa5d… 000056229aa5e… rw-p  000010… 530622 </span><span style='color: #949494;'>"</span><span>/usr/lib/R/bin/exec/R</span><span style='color: #949494;'>"</span><span>   </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> 000056229acd1… 00005622a0c4c… rw-p  000000… 0      </span><span style='color: #949494;'>"</span><span>[heap]</span><span style='color: #949494;'>"</span><span>                  </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> 00007fd63c000… 00007fd63c021… rw-p  000000… 0      </span><span style='color: #949494;'>""</span><span>                        </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> 00007fd63c021… 00007fd640000… ---p  000000… 0      </span><span style='color: #949494;'>""</span><span>                        </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> 00007fd640d3d… 00007fd640d52… r-xp  000000… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> 00007fd640d52… 00007fd640f51… ---p  000150… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> 00007fd640f51… 00007fd640f52… r--p  000140… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> 00007fd640f52… 00007fd640f53… rw-p  000150… 15783… </span><span style='color: #949494;'>"</span><span>/usr/lib/R/modules/inter…</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 482 more rows</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 000055dc893a4… 000055dc893a5… r-xp  000000… 41503… <span style='color: #949494;'>"</span>/usr/lib/R/bin/exec/R<span style='color: #949494;'>"</span>   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 000055dc895a4… 000055dc895a5… r--p  000000… 41503… <span style='color: #949494;'>"</span>/usr/lib/R/bin/exec/R<span style='color: #949494;'>"</span>   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 000055dc895a5… 000055dc895a6… rw-p  000010… 41503… <span style='color: #949494;'>"</span>/usr/lib/R/bin/exec/R<span style='color: #949494;'>"</span>   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 000055dc89e67… 000055dc900ac… rw-p  000000… 0      <span style='color: #949494;'>"</span>[heap]<span style='color: #949494;'>"</span>                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 00007f87c0000… 00007f87c0021… rw-p  000000… 0      <span style='color: #949494;'>""</span>                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 00007f87c0021… 00007f87c4000… ---p  000000… 0      <span style='color: #949494;'>""</span>                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 00007f87c4fa5… 00007f87c4fba… r-xp  000000… 56974… <span style='color: #949494;'>"</span>/usr/lib/R/modules/inter…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 00007f87c4fba… 00007f87c51b9… ---p  000150… 56974… <span style='color: #949494;'>"</span>/usr/lib/R/modules/inter…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 00007f87c51b9… 00007f87c51ba… r--p  000140… 56974… <span style='color: #949494;'>"</span>/usr/lib/R/modules/inter…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 00007f87c51ba… 00007f87c51bb… rw-p  000150… 56974… <span style='color: #949494;'>"</span>/usr/lib/R/modules/inter…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 489 more rows</span></span>
 </code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
