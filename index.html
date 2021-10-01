@@ -28,6 +28,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">procmaps</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
       </span>
     </div>
 
@@ -56,7 +58,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/r-prof/procmaps/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -74,22 +76,22 @@
   <div class="contents col-md-9">
 <div id="procmaps" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#procmaps" class="anchor"></a>procmaps</h1></div>
+<a href="#procmaps" class="anchor" aria-hidden="true"></a>procmaps</h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
 <p>The goal of procmaps is to help determine which library or other region is mapped to a specific address of a process. It is the equivalent of <code>/proc/self/maps</code> as a data frame, and is designed to work on all major platforms.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of procmaps from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
+<p>You can install the released version of procmaps from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <pre class="chroma">
-<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="s">"procmaps"</span>)
+<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span>(<span class="s">"procmaps"</span>)
 </pre>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<a href="#example" class="anchor" aria-hidden="true"></a>Example</h2>
 <p>This is what <code>/proc/self/maps</code> looks like (on Linux) when this document is rendered:</p>
 <pre class="chroma">
 <span class="k">cat</span> <span class="o">/</span><span class="k">proc</span><span class="o">/</span><span class="k">self</span><span class="o">/</span><span class="k">maps</span>
@@ -116,8 +118,8 @@
 </pre>
 <p>Other operating systems make this information available in other form. This package provides the equivalent as a data frame, regardless of operating system:</p>
 <pre class="chroma">
-<span class="nf"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="k"><a href="https://r-prof.github.io/procmaps/">procmaps</a></span>)
-<span class="nf"><a href="https://r-prof.github.io/procmaps/reference/procmap_get.html">procmap_get</a></span>()
+<span class="nf"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span>(<span class="k"><a href="https://r-prof.github.io/procmaps/" class="external-link">procmaps</a></span>)
+<span class="nf"><a href="https://r-prof.github.io/procmaps/reference/procmap_get.html" class="external-link">procmap_get</a></span>()
 <span class="c">#&gt; Converting to tibble, mute this message with `as_tibble = TRUE`.</span>
 <span class="c">#&gt; <span style="color: #949494;"># A tibble: 378 x 6</span></span>
 <span class="c">#&gt;    <span style="font-weight: bold;">from</span><span>         </span><span style="font-weight: bold;">to</span><span>          </span><span style="font-weight: bold;">perms</span><span> </span><span style="font-weight: bold;">offset</span><span>  </span><span style="font-weight: bold;">inode</span><span>  </span><span style="font-weight: bold;">pathname</span><span>                       </span></span>
@@ -138,15 +140,15 @@
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the procmaps project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<a href="#code-of-conduct" class="anchor" aria-hidden="true"></a>Code of Conduct</h2>
+<p>Please note that the procmaps project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=procmaps">https://​cloud.r-project.org/​package=procmaps</a>
 </li>
@@ -156,48 +158,54 @@
 </li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="http://krlmlr.info">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://krlmlr.info">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
 <a href="https://www.r-consortium.org">R Consortium</a> <br><small class="roles"> Funder </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html">More on authors...</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/r-prof/procmaps/actions"><img src="https://github.com/r-prof/procmaps/workflows/rcc/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/r-prof/procmaps?branch=master"><img src="https://codecov.io/gh/r-prof/procmaps/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://CRAN.R-project.org/package=procmaps"><img src="https://www.r-pkg.org/badges/version/procmaps" alt="CRAN status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/r-prof/procmaps/actions" class="external-link"><img src="https://github.com/r-prof/procmaps/workflows/rcc/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/r-prof/procmaps?branch=master" class="external-link"><img src="https://codecov.io/gh/r-prof/procmaps/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://CRAN.R-project.org/package=procmaps" class="external-link"><img src="https://www.r-pkg.org/badges/version/procmaps" alt="CRAN status"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
       </footer>
@@ -205,6 +213,8 @@
 
   
 
+
+  
 
   </body>
 </html>

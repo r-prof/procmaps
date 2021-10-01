@@ -45,6 +45,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -56,9 +58,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">procmaps</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
       </span>
     </div>
 
@@ -88,7 +96,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-prof/procmaps/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -114,7 +122,7 @@
     <p>Returns the address space map of a process as a data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>procmap_get</span>(<span class='kw'>...</span>, as_tibble = <span class='kw'>NULL</span>)</pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>procmap_get</span><span class='op'>(</span><span class='va'>...</span>, as_tibble <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,21 +146,22 @@ data frame.</p></td>
     <p>A data frame or tibble, depending on the <code>as_tibble</code> argument.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>procmap_get</span>()
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 416 x 6</span><span>
-#&gt;    from          to            perms offset  inode  pathname                    
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       
-#&gt; </span><span style='color: #555555;'> 1</span><span> 000000000040… 000000000040… r-xp  000000… 44077… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin/exe…
-#&gt; </span><span style='color: #555555;'> 2</span><span> 000000000060… 000000000060… r--p  000000… 44077… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin/exe…
-#&gt; </span><span style='color: #555555;'> 3</span><span> 000000000060… 000000000060… rw-p  000010… 44077… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/bin/exe…
-#&gt; </span><span style='color: #555555;'> 4</span><span> 000000000117… 0000000006ec… rw-p  000000… 0      </span><span style='color: #555555;'>"</span><span>[heap]</span><span style='color: #555555;'>"</span><span>                    
-#&gt; </span><span style='color: #555555;'> 5</span><span> 00007fd6ea5f… 00007fd6ea60… r-xp  000000… 44076… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/modules…
-#&gt; </span><span style='color: #555555;'> 6</span><span> 00007fd6ea60… 00007fd6ea80… ---p  000150… 44076… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/modules…
-#&gt; </span><span style='color: #555555;'> 7</span><span> 00007fd6ea80… 00007fd6ea80… r--p  000140… 44076… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/modules…
-#&gt; </span><span style='color: #555555;'> 8</span><span> 00007fd6ea80… 00007fd6ea80… rw-p  000150… 44076… </span><span style='color: #555555;'>"</span><span>/opt/R/4.0.2/lib/R/modules…
-#&gt; </span><span style='color: #555555;'> 9</span><span> 00007fd6ea80… 00007fd6ea91… rw-p  000000… 0      </span><span style='color: #555555;'>""</span><span>                          
-#&gt; </span><span style='color: #555555;'>10</span><span> 00007fd6ea91… 00007fd6ea91… r-xp  000000… 54377  </span><span style='color: #555555;'>"</span><span>/usr/lib/x86_64-linux-gnu/…
-#&gt; </span><span style='color: #555555;'># … with 406 more rows</span><span></div></span></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>procmap_get</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 499 × 6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    from             to               perms offset   inode   pathname            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 00005637b7396000 00005637b7397000 r-xp  00000000 4150410 <span style='color: #949494;'>"</span>/usr/lib/R/bin/exe…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 00005637b7596000 00005637b7597000 r--p  00000000 4150410 <span style='color: #949494;'>"</span>/usr/lib/R/bin/exe…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 00005637b7597000 00005637b7598000 rw-p  00001000 4150410 <span style='color: #949494;'>"</span>/usr/lib/R/bin/exe…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 00005637b778c000 00005637bd9e5000 rw-p  00000000 0       <span style='color: #949494;'>"</span>[heap]<span style='color: #949494;'>"</span>            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 00007f19d6ecc000 00007f19d6ee1000 r-xp  00000000 4150638 <span style='color: #949494;'>"</span>/usr/lib/R/modules…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 00007f19d6ee1000 00007f19d70e0000 ---p  00015000 4150638 <span style='color: #949494;'>"</span>/usr/lib/R/modules…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 00007f19d70e0000 00007f19d70e1000 r--p  00014000 4150638 <span style='color: #949494;'>"</span>/usr/lib/R/modules…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 00007f19d70e1000 00007f19d70e2000 rw-p  00015000 4150638 <span style='color: #949494;'>"</span>/usr/lib/R/modules…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 00007f19d70e2000 00007f19d71ec000 rw-p  00000000 0       <span style='color: #949494;'>""</span>                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 00007f19d71ec000 00007f19d71f7000 r-xp  00000000 31448   <span style='color: #949494;'>"</span>/usr/lib/x86_64-li…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 489 more rows</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -164,11 +173,11 @@ data frame.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://krlmlr.info'>Kirill Müller</a>, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p></p>
 </div>
 
       </footer>
@@ -176,6 +185,8 @@ data frame.</p></td>
 
   
 
+
+  
 
   </body>
 </html>
