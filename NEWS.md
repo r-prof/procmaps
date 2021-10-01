@@ -1,3 +1,10 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# procmaps 0.0.3.9001 (2021-10-01)
+
+- Fix failing test on macOS (#27).
+
+
 # procmaps 0.0.3.9000 (2020-09-21)
 
 - Fix compilation on Solaris (#25).
