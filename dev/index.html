@@ -76,23 +76,23 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div id="procmaps" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#procmaps" class="anchor" aria-hidden="true"></a>procmaps</h1></div>
+<div class="page-header"><h1>procmaps<a class="anchor" aria-label="anchor" href="#procmaps"></a>
+</h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
 <p>The goal of procmaps is to help determine which library or other region is mapped to a specific address of a process. It is the equivalent of <code>/proc/self/maps</code> as a data frame, and is designed to work on all major platforms.</p>
 <div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
+<h2>Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the released version of procmaps from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <pre class="chroma">
 <span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span>(<span class="s">"procmaps"</span>)
 </pre>
 </div>
 <div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor" aria-hidden="true"></a>Example</h2>
+<h2>Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <p>This is what <code>/proc/self/maps</code> looks like (on Linux) when this document is rendered:</p>
 <pre class="chroma">
 <span class="k">cat</span> <span class="o">/</span><span class="k">proc</span><span class="o">/</span><span class="k">self</span><span class="o">/</span><span class="k">maps</span>
@@ -125,23 +125,23 @@
 <span class="c">#&gt; <span style="color: #949494;"># A tibble: 378 x 6</span></span>
 <span class="c">#&gt;    <span style="font-weight: bold;">from</span><span>         </span><span style="font-weight: bold;">to</span><span>          </span><span style="font-weight: bold;">perms</span><span> </span><span style="font-weight: bold;">offset</span><span>  </span><span style="font-weight: bold;">inode</span><span>  </span><span style="font-weight: bold;">pathname</span><span>                       </span></span>
 <span class="c">#&gt;    <span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>        </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>       </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>   </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>  </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>                          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 1</span><span> 000055cc2dbâ¦ 000055cc2dâ¦ r-xp  000000â¦ 29393â¦ /usr/lib/R/bin/exec/R          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 2</span><span> 000055cc2ddâ¦ 000055cc2dâ¦ r--p  000000â¦ 29393â¦ /usr/lib/R/bin/exec/R          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 3</span><span> 000055cc2ddâ¦ 000055cc2dâ¦ rw-p  000010â¦ 29393â¦ /usr/lib/R/bin/exec/R          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 4</span><span> 000055cc2e4â¦ 000055cc33â¦ rw-p  000000â¦ 0      [heap]                         </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 5</span><span> 00007f9bac9â¦ 00007f9bacâ¦ r-xp  000000â¦ 28991â¦ /home/kirill/git/R/r-prof/procâ¦</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 6</span><span> 00007f9bac9â¦ 00007f9bacâ¦ ---p  000040â¦ 28991â¦ /home/kirill/git/R/r-prof/procâ¦</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 7</span><span> 00007f9bacbâ¦ 00007f9bacâ¦ r--p  000030â¦ 28991â¦ /home/kirill/git/R/r-prof/procâ¦</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 8</span><span> 00007f9bacbâ¦ 00007f9bacâ¦ rw-p  000040â¦ 28991â¦ /home/kirill/git/R/r-prof/procâ¦</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 9</span><span> 00007f9bacbâ¦ 00007f9bacâ¦ r-xp  000000â¦ 28722â¦ /home/kirill/R-dev/glue/libs/gâ¦</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;">10</span><span> 00007f9bacbâ¦ 00007f9bacâ¦ ---p  000020â¦ 28722â¦ /home/kirill/R-dev/glue/libs/gâ¦</span></span>
-<span class="c">#&gt; <span style="color: #949494;"># â¦ with 368 more rows</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 1</span><span> 000055cc2db… 000055cc2d… r-xp  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 2</span><span> 000055cc2dd… 000055cc2d… r--p  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 3</span><span> 000055cc2dd… 000055cc2d… rw-p  000010… 29393… /usr/lib/R/bin/exec/R          </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 4</span><span> 000055cc2e4… 000055cc33… rw-p  000000… 0      [heap]                         </span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 5</span><span> 00007f9bac9… 00007f9bac… r-xp  000000… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 6</span><span> 00007f9bac9… 00007f9bac… ---p  000040… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 7</span><span> 00007f9bacb… 00007f9bac… r--p  000030… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 8</span><span> 00007f9bacb… 00007f9bac… rw-p  000040… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;"> 9</span><span> 00007f9bacb… 00007f9bac… r-xp  000000… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
+<span class="c">#&gt; <span style="color: #BCBCBC;">10</span><span> 00007f9bacb… 00007f9bac… ---p  000020… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
+<span class="c">#&gt; <span style="color: #949494;"># … with 368 more rows</span></span>
 </pre>
 <hr>
 </div>
 <div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor" aria-hidden="true"></a>Code of Conduct</h2>
+<h2>Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
 <p>Please note that the procmaps project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
@@ -201,7 +201,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill MÃ¼ller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+<p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
