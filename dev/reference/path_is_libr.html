@@ -30,7 +30,7 @@ This is useful to detect the addresses occupied by R itself."><meta name="robots
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-prof/procmaps/">
+  <a href="https://github.com/r-prof/procmaps/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -45,30 +45,32 @@ This is useful to detect the addresses occupied by R itself."><meta name="robots
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Does a path represent R's main library?</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-prof/procmaps/blob/master/R/is-libr.R"><code>R/is-libr.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-prof/procmaps/blob/master/R/is-libr.R" class="external-link"><code>R/is-libr.R</code></a></small>
     <div class="hidden name"><code>path_is_libr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>For a vector of paths, checks if the <a href="https://rdrr.io/r/base/basename.html">basename</a> matches <code>libR</code> or <code>R</code>.
+    <p>For a vector of paths, checks if the <a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a> matches <code>libR</code> or <code>R</code>.
 This is useful to detect the addresses occupied by R itself.</p>
     </div>
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">path_is_libr</span><span class="op">(</span><span class="va">path</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>path</th>
-      <td><p>A character vector of paths</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>path</dt><dd><p>A character vector of paths</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>A logical vector of the same length as <code>path</code>.</p>
+    </div>
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="procmap_get.html">procmap_get</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converting to tibble, mute this message with `as_tibble = TRUE`.</span>
 <span class="r-in"><span class="fu">path_is_libr</span><span class="op">(</span><span class="va">map</span><span class="op">$</span><span class="va">pathname</span><span class="op">)</span></span>

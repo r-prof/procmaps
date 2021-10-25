@@ -29,7 +29,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-prof/procmaps/">
+  <a href="https://github.com/r-prof/procmaps/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -44,7 +44,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the address space map of a process</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-prof/procmaps/blob/master/R/get.R"><code>R/get.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-prof/procmaps/blob/master/R/get.R" class="external-link"><code>R/get.R</code></a></small>
     <div class="hidden name"><code>procmap_get.Rd</code></div>
     </div>
 
@@ -54,40 +54,41 @@
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">procmap_get</span><span class="op">(</span><span class="va">...</span>, as_tibble <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>...</th>
-      <td><p>Reserved for future extensions, must be empty.</p></td>
-    </tr><tr><th>as_tibble</th>
-      <td><p>When using in a package, set to <code>TRUE</code> to return a
-<a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble</a>.
+    <h2>Arguments</h2>
+    
+
+<dl><dt>...</dt><dd><p>Reserved for future extensions, must be empty.</p></dd>
+</dl><dl><dt>as_tibble</dt><dd><p>When using in a package, set to <code>TRUE</code> to return a
+<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a>.
 This requires the tibble package to be installed.
 The default returns a tibble if the package is installed, otherwise a
-data frame.</p></td>
-    </tr></table></div>
-
+data frame.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>A data frame or tibble, depending on the <code>as_tibble</code> argument.</p>
+    </div>
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">procmap_get</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 498 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 493 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    from             to               perms offset   inode   pathname            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0000560e229ef000 0000560e229f0000 r-xp  00000000 4165073 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0000560e22bef000 0000560e22bf0000 r--p  00000000 4165073 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0000560e22bf0000 0000560e22bf1000 rw-p  00001000 4165073 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0000560e2370e000 0000560e29ad1000 rw-p  00000000 0       <span style="color: #949494;">"</span>[heap]<span style="color: #949494;">"</span>            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 00007fcc8c000000 00007fcc8c021000 rw-p  00000000 0       <span style="color: #949494;">""</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 00007fcc8c021000 00007fcc90000000 ---p  00000000 0       <span style="color: #949494;">""</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 00007fcc90540000 00007fcc90555000 r-xp  00000000 4165301 <span style="color: #949494;">"</span>/usr/lib/R/modules…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 00007fcc90555000 00007fcc90754000 ---p  00015000 4165301 <span style="color: #949494;">"</span>/usr/lib/R/modules…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 00007fcc90754000 00007fcc90755000 r--p  00014000 4165301 <span style="color: #949494;">"</span>/usr/lib/R/modules…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 00007fcc90755000 00007fcc90756000 rw-p  00015000 4165301 <span style="color: #949494;">"</span>/usr/lib/R/modules…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 488 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 000055c756ecf000 000055c756ed0000 r-xp  00000000 4423265 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 000055c7570cf000 000055c7570d0000 r--p  00000000 4423265 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 000055c7570d0000 000055c7570d1000 rw-p  00001000 4423265 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 000055c758103000 000055c75e44b000 rw-p  00000000 0       <span style="color: #949494;">"</span>[heap]<span style="color: #949494;">"</span>            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 00007efd50000000 00007efd50021000 rw-p  00000000 0       <span style="color: #949494;">""</span>                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 00007efd50021000 00007efd54000000 ---p  00000000 0       <span style="color: #949494;">""</span>                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 00007efd54529000 00007efd54534000 r-xp  00000000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 00007efd54534000 00007efd54733000 ---p  0000b000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 00007efd54733000 00007efd54734000 r--p  0000a000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 00007efd54734000 00007efd54737000 rw-p  0000b000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 483 more rows</span></span>
 </code></pre></div>
     </div>
   </div>
