@@ -44,7 +44,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the address space map of a process</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-prof/procmaps/blob/master/R/get.R" class="external-link"><code>R/get.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-prof/procmaps/blob/HEAD/R/get.R" class="external-link"><code>R/get.R</code></a></small>
     <div class="hidden name"><code>procmap_get.Rd</code></div>
     </div>
 
@@ -52,15 +52,16 @@
     <p>Returns the address space map of a process as a data frame.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">procmap_get</span><span class="op">(</span><span class="va">...</span>, as_tibble <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">procmap_get</span><span class="op">(</span><span class="va">...</span>, as_tibble <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>...</dt><dd><p>Reserved for future extensions, must be empty.</p></dd>
-</dl><dl><dt>as_tibble</dt><dd><p>When using in a package, set to <code>TRUE</code> to return a
+    <dl><dt>...</dt>
+<dd><p>Reserved for future extensions, must be empty.</p></dd>
+<dt>as_tibble</dt>
+<dd><p>When using in a package, set to <code>TRUE</code> to return a
 <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a>.
 This requires the tibble package to be installed.
 The default returns a tibble if the package is installed, otherwise a
@@ -70,25 +71,24 @@ data frame.</p></dd>
     <h2>Value</h2>
     <p>A data frame or tibble, depending on the <code>as_tibble</code> argument.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">procmap_get</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 493 × 6</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">procmap_get</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 494 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    from             to               perms offset   inode   pathname            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 000055c756ecf000 000055c756ed0000 r-xp  00000000 4423265 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 000055c7570cf000 000055c7570d0000 r--p  00000000 4423265 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 000055c7570d0000 000055c7570d1000 rw-p  00001000 4423265 <span style="color: #949494;">"</span>/usr/lib/R/bin/exe…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 000055c758103000 000055c75e44b000 rw-p  00000000 0       <span style="color: #949494;">"</span>[heap]<span style="color: #949494;">"</span>            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 00007efd50000000 00007efd50021000 rw-p  00000000 0       <span style="color: #949494;">""</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 00007efd50021000 00007efd54000000 ---p  00000000 0       <span style="color: #949494;">""</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 00007efd54529000 00007efd54534000 r-xp  00000000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 00007efd54534000 00007efd54733000 ---p  0000b000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 00007efd54733000 00007efd54734000 r--p  0000a000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 00007efd54734000 00007efd54737000 rw-p  0000b000 87318   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 483 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 000055798426f000 0000557984270000 r-xp  00000000 3113516 /usr/lib/R/bin/exec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 000055798446f000 0000557984470000 r--p  00000000 3113516 /usr/lib/R/bin/exec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0000557984470000 0000557984471000 rw-p  00001000 3113516 /usr/lib/R/bin/exec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 00005579844c9000 000055798a9ca000 rw-p  00000000 0       [heap]              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 00007f3f83393000 00007f3f8339e000 r-xp  00000000 87538   /usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 00007f3f8339e000 00007f3f8359d000 ---p  0000b000 87538   /usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 00007f3f8359d000 00007f3f8359e000 r--p  0000a000 87538   /usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 00007f3f8359e000 00007f3f835a1000 rw-p  0000b000 87538   /usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 00007f3f835a1000 00007f3f83608000 r-xp  00000000 87120   /usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 00007f3f83608000 00007f3f83807000 ---p  00067000 87120   /usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 484 more rows</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -103,7 +103,7 @@ data frame.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>
