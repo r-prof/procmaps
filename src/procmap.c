@@ -17,7 +17,7 @@ void populate_callback_df(void *data, int row, int col, int total_rows, const ch
   SET_STRING_ELT(col_data, row, Rf_mkChar(value));
 }
 
-SEXP procmaps_procmap_get_df() {
+SEXP procmaps_procmap_get_df(void) {
   SEXP out = PROTECT(Rf_allocVector(VECSXP, 6));
   PopulateProcSelfMapsDf(populate_callback_df, (void*)out);
   UNPROTECT(1);
