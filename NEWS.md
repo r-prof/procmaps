@@ -9,34 +9,6 @@
 - Change maintainer e-mail address.
 
 
-# procmaps 0.0.4.9002 (2022-12-30)
-
-- Internal changes only.
-
-
-# procmaps 0.0.4.9001 (2022-12-24)
-
-- Harmonize yaml formatting.
-
-- Revert changes to matrix section.
-
-- Reduce parallelism.
-
-- Also check dev on cran-* branches.
-
-- Update hash key for dev.
-
-- Remove R 3.3.
-
-- Merged cran-0.0.4 into main.
-
-
-
-# procmaps 0.0.4.9000 (2021-10-01)
-
-- Same as previous version.
-
-
 # procmaps 0.0.4 (2021-10-01)
 
 - Fix failing test on macOS (#27).
