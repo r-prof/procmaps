@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# procmaps 0.0.5.9000 (2023-01-19)
+
+## Chore
+
+- Fix compiler warnings (@Antonov548, #29).
+
+- Change maintainer e-mail address.
+
+
 # procmaps 0.0.5 (2023-01-19)
 
 ## Chore
