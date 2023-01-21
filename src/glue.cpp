@@ -36,10 +36,10 @@ extern "C" {
     while (it.Next(&start, &end, &flags, &offset, &inode, &filename)) {
       char buffer[17];
 
-      snprintf(buffer, 17, "%016" PRIx64, start);
+      snprintf(buffer, sizeof(buffer), "%016" PRIx64, start);
       cb(data, row, 0, total_rows, buffer);
 
-      snprintf(buffer, 17, "%016" PRIx64, end);
+      snprintf(buffer, sizeof(buffer), "%016" PRIx64, end);
       cb(data, row, 1, total_rows, buffer);
 
       // We assume 'flags' looks like 'rwxp' or 'rwx'.
@@ -49,13 +49,13 @@ extern "C" {
       // p always seems set on linux, so we set the default to 'p', not '-'
       char p = (flags && flags[0] && flags[1] && flags[2] && flags[3] != 'p')
         ? '-' : 'p';
-      snprintf(buffer, sizeof(char) * 4 + 1, "%c%c%c%c", r, w, x, p);
+      snprintf(buffer, sizeof(buffer), "%c%c%c%c", r, w, x, p);
       cb(data, row, 2, total_rows, buffer);
 
-      snprintf(buffer, sizeof(uint64) + 1, "%08" PRIx64, offset);
+      snprintf(buffer, sizeof(buffer), "%08" PRIx64, offset);
       cb(data, row, 3, total_rows, buffer);
 
-      snprintf(buffer, sizeof(int64) + 1, "%" PRId64, inode);
+      snprintf(buffer, sizeof(buffer), "%" PRId64, inode);
       cb(data, row, 4, total_rows, buffer);
 
       cb(data, row, 5, total_rows, filename);
