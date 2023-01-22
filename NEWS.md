@@ -1,5 +1,20 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# procmaps 0.0.5.9001 (2023-01-22)
+
+## Chore
+
+- Fix Windows checks (#30).
+
+## Uncategorized
+
+- Merge branch 'docs'.
+
+
+- Merged cran-0.0.5 into main.
+
+
+
 # procmaps 0.0.5.9000 (2023-01-19)
 
 ## Chore
