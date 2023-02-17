@@ -1,4 +1,9 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# procmaps 0.0.5.9002 (2023-02-17)
+
+- Internal changes only.
+
 
 # procmaps 0.0.5.9001 (2023-01-22)
 
