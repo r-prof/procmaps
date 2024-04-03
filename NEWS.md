@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9005 (2024-04-03)
+
+- Internal changes only.
+
+
 # procmaps 0.0.5.9004 (2023-10-09)
 
 - Internal changes only.
