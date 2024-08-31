@@ -1,5 +1,52 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9006 (2024-08-31)
+
+## Chore
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-prof/procmaps/actions/runs/10425482568
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-prof/procmaps/actions/runs/10200112202
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-prof/procmaps/actions/runs/9728441193
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-prof/procmaps/actions/runs/9691619452
+
+## Continuous integration
+
+  - Install local package for pkgdown builds.
+
+  - Improve support for protected branches with fledge.
+
+  - Improve support for protected branches, without fledge.
+
+  - Sync with latest developments.
+
+  - Use v2 instead of master.
+
+  - Inline action.
+
+  - Use dev roxygen2 and decor.
+
+  - Fix on Windows, tweak lock workflow.
+
+  - Avoid checking bashisms on Windows.
+
+  - Better commit message.
+
+  - Bump versions, better default, consume custom matrix.
+
+  - Recent updates.
+
+
 # procmaps 0.0.5.9005 (2024-04-03)
 
 - Internal changes only.
