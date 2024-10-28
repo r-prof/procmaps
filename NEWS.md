@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9008 (2024-10-28)
+
+## Continuous integration
+
+  - Use pkgdown branch (#33).
+    
+      - ci: Use pkgdown branch
+    
+      - ci: Updates from duckdb
+    
+      - ci: Trigger run
+
+
 # procmaps 0.0.5.9007 (2024-09-15)
 
 ## Continuous integration
