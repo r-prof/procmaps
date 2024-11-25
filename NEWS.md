@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9012 (2024-11-25)
+
+## Continuous integration
+
+- Need to install R on Ubuntu 24.04 (#39).
+
+- Use Ubuntu 24.04 and styler PR (#37).
+
+
 # procmaps 0.0.5.9011 (2024-11-22)
 
 ## Continuous integration
