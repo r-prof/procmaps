@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9014 (2024-11-27)
+
+## Continuous integration
+
+- Explicit permissions (#41).
+
+
 # procmaps 0.0.5.9013 (2024-11-26)
 
 ## Continuous integration
