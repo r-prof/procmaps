@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9015 (2024-11-28)
+
+## Continuous integration
+
+- Ignore errors when removing pkg-config on macOS (#42).
+
+
 # procmaps 0.0.5.9014 (2024-11-27)
 
 ## Continuous integration
