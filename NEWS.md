@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9016 (2024-12-07)
+
+## Continuous integration
+
+- Use larger retry count for lock-threads workflow (#43).
+
+
 # procmaps 0.0.5.9015 (2024-11-28)
 
 ## Continuous integration
