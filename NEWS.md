@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9018 (2024-12-09)
+
+## Continuous integration
+
+- Avoid failure in fledge workflow if no changes (#45).
+
+
 # procmaps 0.0.5.9017 (2024-12-08)
 
 ## Continuous integration
