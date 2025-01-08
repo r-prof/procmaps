@@ -13,7 +13,15 @@ make_check_as_tibble <- function() {
   tibble_available <- NA
 
   function(as_tibble) {
-    if (!is.null(as_tibble) && !is.na(as_tibble)) return(as_tibble)
+    if (!is.null(as_tibble) && is.na(as_tibble)) {
+      checked <<- FALSE
+      tibble_available <<- NA
+      return(FALSE)
+    }
+    if (!is.null(as_tibble)) {
+      return(as_tibble)
+    }
+
     if (!checked) {
       tibble_available <<- requireNamespace("tibble", quietly = TRUE)
       if (tibble_available) {
