@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9019 (2025-01-09)
+
+## Chore
+
+- IDE.
+
+## Testing
+
+- Fix tests if tibble is not installed.
+
+
 # procmaps 0.0.5.9018 (2024-12-09)
 
 ## Continuous integration
