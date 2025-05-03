@@ -80,20 +80,20 @@ data frame.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">procmap_get</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 459 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 454 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    from             to               perms offset   inode  pathname             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 000055b66ce97000 000055b66ce98000 r--p  00000000 280818 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 000055b66ce98000 000055b66ce99000 r-xp  00001000 280818 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 000055b66ce99000 000055b66ce9a000 r--p  00002000 280818 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 000055b66ce9a000 000055b66ce9b000 r--p  00002000 280818 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 000055b66ce9b000 000055b66ce9c000 rw-p  00003000 280818 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 000055b690b2c000 000055b6978be000 rw-p  00000000 0      <span style="color: #949494;">"</span>[heap]<span style="color: #949494;">"</span>             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 00007f2a08000000 00007f2a08021000 rw-p  00000000 0      <span style="color: #949494;">""</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 00007f2a08021000 00007f2a0c000000 ---p  00000000 0      <span style="color: #949494;">""</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 00007f2a0cc00000 00007f2a10c00000 rw-p  00000000 0      <span style="color: #949494;">""</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 00007f2a10c5b000 00007f2a10c93000 r--p  00000000 5553   <span style="color: #949494;">"</span>/usr/lib/x86_64-lin…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 449 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 000056462f947000 000056462f948000 r--p  00000000 524896 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 000056462f948000 000056462f949000 r-xp  00001000 524896 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 000056462f949000 000056462f94a000 r--p  00002000 524896 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 000056462f94a000 000056462f94b000 r--p  00002000 524896 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 000056462f94b000 000056462f94c000 rw-p  00003000 524896 <span style="color: #949494;">"</span>/opt/R/4.5.0/lib/R/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 00005646328c7000 0000564639650000 rw-p  00000000 0      <span style="color: #949494;">"</span>[heap]<span style="color: #949494;">"</span>             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 00007fd290000000 00007fd290021000 rw-p  00000000 0      <span style="color: #949494;">""</span>                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 00007fd290021000 00007fd294000000 ---p  00000000 0      <span style="color: #949494;">""</span>                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 00007fd295c5c000 00007fd295c94000 r--p  00000000 5553   <span style="color: #949494;">"</span>/usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 00007fd295c94000 00007fd295d66000 r-xp  00038000 5553   <span style="color: #949494;">"</span>/usr/lib/x86_64-lin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 444 more rows</span></span>
 </code></pre></div>
     </div>
   </div>
