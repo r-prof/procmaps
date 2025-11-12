@@ -1,5 +1,50 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9020 (2025-11-12)
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/17451415477
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/14636204166
+
+## Continuous integration
+
+- Fix reviewdog and add commenting workflow (#60).
+
+- Use workflows for fledge (#59).
+
+- Sync (#58).
+
+- Use reviewdog for external PRs (#57).
+
+- Cleanup and fix macOS (#56).
+
+- Format with air, check detritus, better handling of `extra-packages` (#55).
+
+- Enhance permissions for workflow (#54).
+
+- Permissions, better tests for missing suggests, lints (#53).
+
+- Only fail covr builds if token is given (#52).
+
+- Always use `_R_CHECK_FORCE_SUGGESTS_=false` (#51).
+
+- Correct installation of xml2 (#50).
+
+- Explain (#49).
+
+- Add xml2 for covr, print testthat results (#48).
+
+- Fix (#47).
+
+- Sync (#46).
+
+
 # procmaps 0.0.5.9019 (2025-01-09)
 
 ## Chore
