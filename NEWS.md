@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9021 (2025-11-17)
+
+## Continuous integration
+
+- Install binaries from r-universe for dev workflow (#61).
+
+
 # procmaps 0.0.5.9020 (2025-11-12)
 
 ## Chore
