@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9022 (2026-01-14)
+
+## Continuous integration
+
+- Fix comment (#64).
+
+- Tweaks (#63).
+
+- Test all R versions on branches that start with cran- (#62).
+
+
 # procmaps 0.0.5.9021 (2025-11-17)
 
 ## Continuous integration
