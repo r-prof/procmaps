@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9025 (2026-05-10)
+
+## Continuous integration
+
+- Tweak fledge workflow and ccache action.
+
+
 # procmaps 0.0.5.9024 (2026-05-07)
 
 ## Chore
