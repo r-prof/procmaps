@@ -1,5 +1,46 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9026 (2026-05-13)
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/25775086445
+
+- Add ccache to `.gitignore` and `.Rbuildignore`.
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/25774948081
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/25713989414
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/25651408165
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/25622097232
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/25620191327
+
+## Continuous integration
+
+- Create snapshot update PR against correct branch.
+
+- Add reference to `/apply-patch` workflow in commit message.
+
+- Clarify rationale for not deploying on schedule.
+
+- Only run fledge on pushes to main.
+
+
 # procmaps 0.0.5.9025 (2026-05-10)
 
 ## Continuous integration
