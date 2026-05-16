@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9027 (2026-05-16)
+
+- Ci: Unify fledge.yaml across cynkratemplate and fledge (#86).
+
+
 # procmaps 0.0.5.9026 (2026-05-13)
 
 ## Chore
