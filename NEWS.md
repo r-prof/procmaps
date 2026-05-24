@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9028 (2026-05-24)
+
+## Continuous integration
+
+- Update ccache-action reference.
+
+- Bump action version.
+
+
 # procmaps 0.0.5.9027 (2026-05-16)
 
 - Ci: Unify fledge.yaml across cynkratemplate and fledge (#86).
