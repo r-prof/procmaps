@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9029 (2026-07-22)
+
+## Continuous integration
+
+- Run on Ubuntu 26.04.
+
+- Align workflows with template.
+
+
 # procmaps 0.0.5.9028 (2026-05-24)
 
 ## Continuous integration
