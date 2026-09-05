@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9036 (2026-09-05)
+
+## Bug fixes
+
+### ci
+
+- Backport kit fixes from `rigraph`, `duckdb-r` and `dm`.
+
+
 # procmaps 0.0.5.9035 (2026-08-08)
 
 ## Continuous integration
