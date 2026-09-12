@@ -18,6 +18,13 @@ You can install the released version of procmaps from [CRAN](https://CRAN.R-proj
 <span class='nf'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span>(<span class='s'>"procmaps"</span>)
 </pre>
 
+And the development version from [GitHub](https://github.com/) with:
+
+<pre class='chroma'>
+<span class='c'># install.packages("pak")</span>
+<span class='nf'>pak</span>::<span class='nf'><a href='https://pak.r-lib.org/reference/pak.html'>pak</a></span>(<span class='s'>"r-prof/procmaps"</span>)
+</pre>
+
 ## Example
 
 This is what `/proc/self/maps` looks like (on Linux) when this document is rendered:
