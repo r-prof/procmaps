@@ -1,0 +1,12 @@
+56105b1c9000-56105b1ca000 r--p 00000000 fe:00 549660                     /opt/R/4.5.3/lib/R/bin/exec/R
+56105b1ca000-56105b1cb000 r-xp 00001000 fe:00 549660                     /opt/R/4.5.3/lib/R/bin/exec/R
+56105b1cb000-56105b1cc000 r--p 00002000 fe:00 549660                     /opt/R/4.5.3/lib/R/bin/exec/R
+56105b1cc000-56105b1cd000 r--p 00002000 fe:00 549660                     /opt/R/4.5.3/lib/R/bin/exec/R
+56105b1cd000-56105b1ce000 rw-p 00003000 fe:00 549660                     /opt/R/4.5.3/lib/R/bin/exec/R
+561096d4b000-56109b491000 rw-p 00000000 00:00 0                          [heap]
+7fbd563f2000-7fbd5641c000 r--p 00000000 fe:00 1696201                    /root/R/x86_64-pc-linux-gnu-library/4.5/testthat/libs/testthat.so
+7fbd5641c000-7fbd5645c000 r-xp 0002a000 fe:00 1696201                    /root/R/x86_64-pc-linux-gnu-library/4.5/testthat/libs/testthat.so
+7fbd5645c000-7fbd5646f000 r--p 0006a000 fe:00 1696201                    /root/R/x86_64-pc-linux-gnu-library/4.5/testthat/libs/testthat.so
+7fbd5646f000-7fbd56473000 r--p 0007c000 fe:00 1696201                    /root/R/x86_64-pc-linux-gnu-library/4.5/testthat/libs/testthat.so
+7fbd56473000-7fbd56475000 rw-p 00080000 fe:00 1696201                    /root/R/x86_64-pc-linux-gnu-library/4.5/testthat/libs/testthat.so
+7fbd56475000-7fbd5647d000 rw-p 00000000 00:00 0 

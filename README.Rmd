@@ -1,8 +1,11 @@
 ---
-output: downlit::readme_document
+output: cynkratemplate::readme_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md and index.md are generated from README.Rmd.
+     Edit that file and render it the usual way: rmarkdown::render(),
+     devtools::build_readme(), or the Knit button. The cynkratemplate
+     package must be installed; it supplies the output format. -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -12,6 +15,26 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 pkgload::load_all()
+
+# This README shows a process's memory map, which is different on every run:
+# the addresses are randomised by ASLR, and the regions depend on the machine
+# and on what R has loaded. Rendering it live would make every render a diff,
+# so the output below is a recording, replayed from README-fixtures/.
+#
+# To refresh the recording, render with the environment variable set:
+#
+#     PROCMAPS_RECORD=1 Rscript -e 'rmarkdown::render("README.Rmd")'
+#
+# and commit the changed fixtures along with the README.
+recording <- function(name, produce, n = Inf) {
+  path <- file.path("README-fixtures", name)
+  if (nzchar(Sys.getenv("PROCMAPS_RECORD"))) {
+    writeLines(utils::head(produce(), n), path)
+  }
+  readLines(path)
+}
+
+replay <- function(...) cat(recording(...), sep = "\n")
 ```
 
 # procmaps
@@ -25,7 +48,6 @@ pkgload::load_all()
 
 The goal of procmaps is to help determine which library or other region is mapped to a specific address of a process.
 It is the equivalent of `/proc/self/maps` as a data frame, and is designed to work on all major platforms.
-
 
 ## Installation
 
@@ -44,19 +66,35 @@ pak::pak("r-prof/procmaps")
 
 ## Example
 
-This is what `/proc/self/maps` looks like (on Linux) when this document is rendered:
+This is what the kernel exposes for this R process on Linux, truncated to its first few regions:
 
-```{bash}
-cat /proc/self/maps
+``` r
+cat(readLines("/proc/self/maps"), sep = "\n")
+```
+
+```{r maps-raw, echo = FALSE, comment = ""}
+replay("proc-self-maps.txt", function() readLines("/proc/self/maps"), n = 12)
 ```
 
 Other operating systems make this information available in other form.
 This package provides the equivalent as a data frame, regardless of operating system:
 
-```{r}
+``` r
 library(procmaps)
 procmap_get()
 ```
+
+```{r maps-df, echo = FALSE}
+replay("procmap-get.txt", function() {
+  c(
+    utils::capture.output(x <- procmap_get(), type = "message"),
+    utils::capture.output(print(x))
+  )
+})
+```
+
+Both outputs above are recordings of the same R process, replayed from `README-fixtures/`, so the addresses in the two views correspond.
+A live run would differ on every render, because the addresses are randomised and the mapped regions depend on the machine.
 
 ---
 
