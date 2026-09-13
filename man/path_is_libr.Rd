@@ -14,7 +14,7 @@ A logical vector of the same length as \code{path}.
 }
 \description{
 For a vector of paths, checks if the \link{basename} matches \code{libR} or \code{R}.
-This is useful to detect the addresses occupied by R itself.
+ This is useful to detect the addresses occupied by R itself.
 }
 \examples{
 map <- procmap_get()
