@@ -99,7 +99,10 @@ replay("procmap-get.txt", function() {
 })
 ```
 
-Both outputs above are recordings of the same R process, replayed from `README-fixtures/`, so the addresses in the two views correspond.
+Both outputs above are recordings of the same R process, taken on x86_64 Linux under R 4.5.3 and replayed from `README-fixtures/`,
+so the addresses in the two views correspond.
+The one exception is `[heap]`, which ends higher in the second view,
+because `procmap_get()` allocates between the two snapshots and the heap grows.
 A live run would differ on every render, because the addresses are randomised and the mapped regions depend on the machine.
 
 ---

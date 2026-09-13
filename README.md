@@ -76,7 +76,10 @@ procmap_get(as_tibble = TRUE)
     #> 10 00007fbd5646f000 00007fbd56473000 r--p  0007c000 1696201 /root/R/x86_64-pc-l…
     #> # ℹ 520 more rows
 
-Both outputs above are recordings of the same R process, replayed from `README-fixtures/`, so the addresses in the two views correspond.
+Both outputs above are recordings of the same R process, taken on x86_64 Linux under R 4.5.3 and replayed from `README-fixtures/`,
+so the addresses in the two views correspond.
+The one exception is `[heap]`, which ends higher in the second view,
+because `procmap_get()` allocates between the two snapshots and the heap grows.
 A live run would differ on every render, because the addresses are randomised and the mapped regions depend on the machine.
 
 ------------------------------------------------------------------------
