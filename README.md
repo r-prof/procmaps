@@ -58,7 +58,7 @@ This package provides the equivalent as a data frame, regardless of operating sy
 
 ``` r
 library(procmaps)
-procmap_get()
+procmap_get(as_tibble = TRUE)
 ```
 
     #> # A tibble: 530 × 6

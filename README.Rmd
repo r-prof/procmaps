@@ -14,6 +14,12 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+# The fixtures below are recorded as printed text, so the print width is baked
+# into them. Pin it, or a maintainer whose console is not 80 columns wide
+# reflows every line of the recording the next time it is refreshed.
+options(width = 80)
+
 pkgload::load_all()
 
 # This README shows a process's memory map, which is different on every run:
@@ -81,15 +87,15 @@ This package provides the equivalent as a data frame, regardless of operating sy
 
 ``` r
 library(procmaps)
-procmap_get()
+procmap_get(as_tibble = TRUE)
 ```
 
 ```{r maps-df, echo = FALSE}
+# `as_tibble = TRUE` is what the shown code passes, so the recording is exactly
+# what a reader gets. Called without it, procmap_get() emits a "Converting to
+# tibble" message once per session, which no recording can reproduce faithfully.
 replay("procmap-get.txt", function() {
-  c(
-    utils::capture.output(x <- procmap_get(), type = "message"),
-    utils::capture.output(print(x))
-  )
+  utils::capture.output(print(procmap_get(as_tibble = TRUE)))
 })
 ```
 
