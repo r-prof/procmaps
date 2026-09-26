@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">procmaps</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.5.9037</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.5.9038</span>
       </span>
     </div>
 
@@ -70,69 +70,55 @@
 </h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
 <p>The goal of procmaps is to help determine which library or other region is mapped to a specific address of a process. It is the equivalent of <code>/proc/self/maps</code> as a data frame, and is designed to work on all major platforms.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the released version of procmaps from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
-<pre class="chroma">
-<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span>(<span class="s">"procmaps"</span>)
-</pre>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"procmaps"</span><span class="op">)</span></span></code></pre></div>
+<p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"r-prof/procmaps"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This is what <code>/proc/self/maps</code> looks like (on Linux) when this document is rendered:</p>
-<pre class="chroma">
-<span class="k">cat</span> <span class="o">/</span><span class="k">proc</span><span class="o">/</span><span class="k">self</span><span class="o">/</span><span class="k">maps</span>
-<span class="c">#&gt; 56390592e000-563905936000 r-xp 00000000 fd:01 2883652                    /bin/cat</span>
-<span class="c">#&gt; 563905b35000-563905b36000 r--p 00007000 fd:01 2883652                    /bin/cat</span>
-<span class="c">#&gt; 563905b36000-563905b37000 rw-p 00008000 fd:01 2883652                    /bin/cat</span>
-<span class="c">#&gt; 563906bb9000-563906bda000 rw-p 00000000 00:00 0                          [heap]</span>
-<span class="c">#&gt; 7fb42c468000-7fb42c8c7000 r--p 00000000 fd:01 29370411                   /usr/lib/locale/locale-archive</span>
-<span class="c">#&gt; 7fb42c8c7000-7fb42caae000 r-xp 00000000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7fb42caae000-7fb42ccae000 ---p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7fb42ccae000-7fb42ccb2000 r--p 001e7000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7fb42ccb2000-7fb42ccb4000 rw-p 001eb000 fd:01 15731435                   /lib/x86_64-linux-gnu/libc-2.27.so</span>
-<span class="c">#&gt; 7fb42ccb4000-7fb42ccb8000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7fb42ccb8000-7fb42ccdf000 r-xp 00000000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class="c">#&gt; 7fb42ceb2000-7fb42ceb4000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7fb42cebd000-7fb42cedf000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7fb42cedf000-7fb42cee0000 r--p 00027000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class="c">#&gt; 7fb42cee0000-7fb42cee1000 rw-p 00028000 fd:01 15731135                   /lib/x86_64-linux-gnu/ld-2.27.so</span>
-<span class="c">#&gt; 7fb42cee1000-7fb42cee2000 rw-p 00000000 00:00 0 </span>
-<span class="c">#&gt; 7ffed6a9a000-7ffed6abc000 rw-p 00000000 00:00 0                          [stack]</span>
-<span class="c">#&gt; 7ffed6b08000-7ffed6b0b000 r--p 00000000 00:00 0                          [vvar]</span>
-<span class="c">#&gt; 7ffed6b0b000-7ffed6b0d000 r-xp 00000000 00:00 0                          [vdso]</span>
-<span class="c">#&gt; ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]</span>
-</pre>
+<p>This is what the kernel exposes for this R process on Linux, truncated to its first few regions:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="st">"/proc/self/maps"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="dv">56105</span>b1c9000<span class="dv">-56105</span>b1ca000 r<span class="sc">--</span>p <span class="dv">00000000</span> fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">549660</span>                     <span class="sc">/</span>opt<span class="sc">/</span>R<span class="sc">/</span><span class="dv">4</span>.<span class="fl">5.3</span><span class="sc">/</span>lib<span class="sc">/</span>R<span class="sc">/</span>bin<span class="sc">/</span>exec<span class="sc">/</span>R</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="dv">56105</span>b1ca000<span class="dv">-56105</span>b1cb000 r<span class="sc">-</span>xp <span class="dv">00001000</span> fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">549660</span>                     <span class="sc">/</span>opt<span class="sc">/</span>R<span class="sc">/</span><span class="dv">4</span>.<span class="fl">5.3</span><span class="sc">/</span>lib<span class="sc">/</span>R<span class="sc">/</span>bin<span class="sc">/</span>exec<span class="sc">/</span>R</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="dv">56105</span>b1cb000<span class="dv">-56105</span>b1cc000 r<span class="sc">--</span>p <span class="dv">00002000</span> fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">549660</span>                     <span class="sc">/</span>opt<span class="sc">/</span>R<span class="sc">/</span><span class="dv">4</span>.<span class="fl">5.3</span><span class="sc">/</span>lib<span class="sc">/</span>R<span class="sc">/</span>bin<span class="sc">/</span>exec<span class="sc">/</span>R</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="dv">56105</span>b1cc000<span class="dv">-56105</span>b1cd000 r<span class="sc">--</span>p <span class="dv">00002000</span> fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">549660</span>                     <span class="sc">/</span>opt<span class="sc">/</span>R<span class="sc">/</span><span class="dv">4</span>.<span class="fl">5.3</span><span class="sc">/</span>lib<span class="sc">/</span>R<span class="sc">/</span>bin<span class="sc">/</span>exec<span class="sc">/</span>R</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="dv">56105</span>b1cd000<span class="dv">-56105</span>b1ce000 rw<span class="sc">-</span>p <span class="dv">00003000</span> fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">549660</span>                     <span class="sc">/</span>opt<span class="sc">/</span>R<span class="sc">/</span><span class="dv">4</span>.<span class="fl">5.3</span><span class="sc">/</span>lib<span class="sc">/</span>R<span class="sc">/</span>bin<span class="sc">/</span>exec<span class="sc">/</span>R</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="dv">561096</span>d4b000<span class="dv">-56109</span>b491000 rw<span class="sc">-</span>p <span class="dv">00000000</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="dv">0</span>                          [heap]</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="dv">7</span>fbd563f2000<span class="dv">-7</span>fbd5641c000 r<span class="sc">--</span>p <span class="dv">00000000</span> fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">1696201</span>                    <span class="sc">/</span>root<span class="sc">/</span>R<span class="sc">/</span>x86_64<span class="sc">-</span>pc<span class="sc">-</span>linux<span class="sc">-</span>gnu<span class="sc">-</span>library<span class="sc">/</span><span class="fl">4.5</span><span class="sc">/</span>testthat<span class="sc">/</span>libs<span class="sc">/</span>testthat.so</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="dv">7</span>fbd5641c000<span class="dv">-7</span>fbd5645c000 r<span class="sc">-</span>xp <span class="dv">0002</span>a000 fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">1696201</span>                    <span class="sc">/</span>root<span class="sc">/</span>R<span class="sc">/</span>x86_64<span class="sc">-</span>pc<span class="sc">-</span>linux<span class="sc">-</span>gnu<span class="sc">-</span>library<span class="sc">/</span><span class="fl">4.5</span><span class="sc">/</span>testthat<span class="sc">/</span>libs<span class="sc">/</span>testthat.so</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="dv">7</span>fbd5645c000<span class="dv">-7</span>fbd5646f000 r<span class="sc">--</span>p <span class="dv">0006</span>a000 fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">1696201</span>                    <span class="sc">/</span>root<span class="sc">/</span>R<span class="sc">/</span>x86_64<span class="sc">-</span>pc<span class="sc">-</span>linux<span class="sc">-</span>gnu<span class="sc">-</span>library<span class="sc">/</span><span class="fl">4.5</span><span class="sc">/</span>testthat<span class="sc">/</span>libs<span class="sc">/</span>testthat.so</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="dv">7</span>fbd5646f000<span class="dv">-7</span>fbd56473000 r<span class="sc">--</span>p <span class="dv">0007</span>c000 fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">1696201</span>                    <span class="sc">/</span>root<span class="sc">/</span>R<span class="sc">/</span>x86_64<span class="sc">-</span>pc<span class="sc">-</span>linux<span class="sc">-</span>gnu<span class="sc">-</span>library<span class="sc">/</span><span class="fl">4.5</span><span class="sc">/</span>testthat<span class="sc">/</span>libs<span class="sc">/</span>testthat.so</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="dv">7</span>fbd56473000<span class="dv">-7</span>fbd56475000 rw<span class="sc">-</span>p <span class="dv">00080000</span> fe<span class="sc">:</span><span class="dv">00</span> <span class="dv">1696201</span>                    <span class="sc">/</span>root<span class="sc">/</span>R<span class="sc">/</span>x86_64<span class="sc">-</span>pc<span class="sc">-</span>linux<span class="sc">-</span>gnu<span class="sc">-</span>library<span class="sc">/</span><span class="fl">4.5</span><span class="sc">/</span>testthat<span class="sc">/</span>libs<span class="sc">/</span>testthat.so</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="dv">7</span>fbd56475000<span class="dv">-7</span>fbd5647d000 rw<span class="sc">-</span>p <span class="dv">00000000</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">00</span> <span class="dv">0</span> </span></code></pre></div>
 <p>Other operating systems make this information available in other form. This package provides the equivalent as a data frame, regardless of operating system:</p>
-<pre class="chroma">
-<span class="nf"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span>(<span class="k"><a href="https://r-prof.github.io/procmaps/" class="external-link">procmaps</a></span>)
-<span class="nf"><a href="https://r-prof.github.io/procmaps/reference/procmap_get.html" class="external-link">procmap_get</a></span>()
-<span class="c">#&gt; Converting to tibble, mute this message with `as_tibble = TRUE`.</span>
-<span class="c">#&gt; <span style="color: #949494;"># A tibble: 378 x 6</span></span>
-<span class="c">#&gt;    <span style="font-weight: bold;">from</span><span>         </span><span style="font-weight: bold;">to</span><span>          </span><span style="font-weight: bold;">perms</span><span> </span><span style="font-weight: bold;">offset</span><span>  </span><span style="font-weight: bold;">inode</span><span>  </span><span style="font-weight: bold;">pathname</span><span>                       </span></span>
-<span class="c">#&gt;    <span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>        </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>       </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>   </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>  </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>                          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 1</span><span> 000055cc2db… 000055cc2d… r-xp  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 2</span><span> 000055cc2dd… 000055cc2d… r--p  000000… 29393… /usr/lib/R/bin/exec/R          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 3</span><span> 000055cc2dd… 000055cc2d… rw-p  000010… 29393… /usr/lib/R/bin/exec/R          </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 4</span><span> 000055cc2e4… 000055cc33… rw-p  000000… 0      [heap]                         </span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 5</span><span> 00007f9bac9… 00007f9bac… r-xp  000000… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 6</span><span> 00007f9bac9… 00007f9bac… ---p  000040… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 7</span><span> 00007f9bacb… 00007f9bac… r--p  000030… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 8</span><span> 00007f9bacb… 00007f9bac… rw-p  000040… 28991… /home/kirill/git/R/r-prof/proc…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;"> 9</span><span> 00007f9bacb… 00007f9bac… r-xp  000000… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
-<span class="c">#&gt; <span style="color: #BCBCBC;">10</span><span> 00007f9bacb… 00007f9bac… ---p  000020… 28722… /home/kirill/R-dev/glue/libs/g…</span></span>
-<span class="c">#&gt; <span style="color: #949494;"># … with 368 more rows</span></span>
-</pre>
-<hr>
-</div>
-<div class="section level2">
-<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
-</h2>
-<p>Please note that the procmaps project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-prof.github.io/procmaps/" class="external-link">procmaps</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/procmap_get.html">procmap_get</a></span><span class="op">(</span>as_tibble <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 530 × 6</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#&gt;    from             to               perms offset   inode   pathname            </span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;               </span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt;  1 000056105b1c9000 000056105b1ca000 r--p  00000000 549660  /opt/R/4.5.3/lib/R/…</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt;  2 000056105b1ca000 000056105b1cb000 r-xp  00001000 549660  /opt/R/4.5.3/lib/R/…</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt;  3 000056105b1cb000 000056105b1cc000 r--p  00002000 549660  /opt/R/4.5.3/lib/R/…</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt;  4 000056105b1cc000 000056105b1cd000 r--p  00002000 549660  /opt/R/4.5.3/lib/R/…</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt;  5 000056105b1cd000 000056105b1ce000 rw-p  00003000 549660  /opt/R/4.5.3/lib/R/…</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt;  6 0000561096d4b000 000056109b6f2000 rw-p  00000000 0       [heap]              </span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt;  7 00007fbd563f2000 00007fbd5641c000 r--p  00000000 1696201 /root/R/x86_64-pc-l…</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#&gt;  8 00007fbd5641c000 00007fbd5645c000 r-xp  0002a000 1696201 /root/R/x86_64-pc-l…</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co">#&gt;  9 00007fbd5645c000 00007fbd5646f000 r--p  0006a000 1696201 /root/R/x86_64-pc-l…</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt; 10 00007fbd5646f000 00007fbd56473000 r--p  0007c000 1696201 /root/R/x86_64-pc-l…</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 520 more rows</span></span></code></pre></div>
+<p>Both outputs above are recordings of the same R process, taken on x86_64 Linux under R 4.5.3 and replayed from <code>README-fixtures/</code>, so the addresses in the two views correspond. The one exception is <code>[heap]</code>, which ends higher in the second view, because <code><a href="reference/procmap_get.html">procmap_get()</a></code> allocates between the two snapshots and the heap grows. A live run would differ on every render, because the addresses are randomised and the mapped regions depend on the machine.</p>
 </div>
 </div>
   </div>
@@ -183,7 +169,7 @@
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/r-prof/procmaps/actions" class="external-link"><img src="https://github.com/r-prof/procmaps/workflows/rcc/badge.svg" alt="R build status"></a></li>
-<li><a href="https://app.codecov.io/gh/r-prof/procmaps?branch=main" class="external-link"><img src="https://codecov.io/gh/r-prof/procmaps/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://app.codecov.io/gh/r-prof/procmaps/tree/main" class="external-link"><img src="https://codecov.io/gh/r-prof/procmaps/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://CRAN.R-project.org/package=procmaps" class="external-link"><img src="https://www.r-pkg.org/badges/version/procmaps" alt="CRAN status"></a></li>
 </ul>
 </div>
