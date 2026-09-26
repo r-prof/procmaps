@@ -79,7 +79,7 @@ procmap_get(as_tibble = TRUE)
 Both outputs above are recordings of the same R process, taken on x86_64 Linux under R 4.5.3 and replayed from `README-fixtures/`,
 so the addresses in the two views correspond.
 The one exception is `[heap]`, which ends higher in the second view,
-because `procmap_get()` allocates between the two snapshots and the heap grows.
+because [`procmap_get()`](https://r-prof.github.io/procmaps/reference/procmap_get.html) allocates between the two snapshots and the heap grows.
 A live run would differ on every render, because the addresses are randomised and the mapped regions depend on the machine.
 
 ------------------------------------------------------------------------
