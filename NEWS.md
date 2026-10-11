@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9042 (2026-10-11)
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-prof/procmaps/actions/runs/38032817743
+
+
 # procmaps 0.0.5.9041 (2026-09-29)
 
 ## Chore
