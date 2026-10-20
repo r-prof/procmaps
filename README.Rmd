@@ -55,6 +55,26 @@ replay <- function(...) cat(recording(...), sep = "\n")
 The goal of procmaps is to help determine which library or other region is mapped to a specific address of a process.
 It is the equivalent of `/proc/self/maps` as a data frame, and is designed to work on all major platforms.
 
+## Goals and non-goals
+
+procmaps aims to:
+
+- Return the address space map of the running process as a data frame, one row per mapped region,
+  with the columns `/proc/self/maps` exposes: `from`, `to`, `perms`, `offset`, `inode` and `pathname`.
+- Give the same answer on every major platform, including those that have no `/proc/self/maps`,
+  by way of the bundled gperftools code.
+- Install anywhere without setup: no `./configure` step, no `SystemRequirements`, and no package that must be imported.
+- Stay small enough to depend on: two exported functions, `procmap_get()` and `path_is_libr()`.
+
+It is explicitly not trying to:
+
+- Map any process other than the one that calls it.
+- Turn an address into a function name or a source location.
+  It reports the region an instruction pointer falls into, and the file mapped there.
+- Take the backtrace or the profile that produced those instruction pointers in the first place.
+- Interpret the map beyond `path_is_libr()`, which matches the basename of R's own library.
+- Require tibble: it is used when installed, and `as_tibble = FALSE` always returns a plain data frame.
+
 ## Installation
 
 You can install the released version of procmaps from [CRAN](https://CRAN.R-project.org) with:
