@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">procmaps</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.5.9042</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.5.9043</span>
       </span>
     </div>
 
@@ -78,20 +78,20 @@ The default returns a tibble if the package is installed, otherwise a data frame
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">procmap_get</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 568 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 570 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    from             to               perms offset   inode   pathname            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 000061d44eacb000 000061d44eacc000 r--p  00000000 8538782 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 000061d44eacc000 000061d44eacd000 r-xp  00001000 8538782 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 000061d44eacd000 000061d44eace000 r--p  00002000 8538782 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 000061d44eace000 000061d44eacf000 r--p  00002000 8538782 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 000061d44eacf000 000061d44ead0000 rw-p  00003000 8538782 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 000061d45d350000 000061d4642dc000 rw-p  00000000 0       <span style="color: #949494;">"</span>[heap]<span style="color: #949494;">"</span>            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0000710d7c000000 0000710d7c021000 rw-p  00000000 0       <span style="color: #949494;">""</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0000710d7c021000 0000710d80000000 ---p  00000000 0       <span style="color: #949494;">""</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0000710d813a6000 0000710d813ab000 r--p  00000000 97452   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0000710d813ab000 0000710d8142f000 r-xp  00005000 97452   <span style="color: #949494;">"</span>/usr/lib/x86_64-li…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 558 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 00005724a6f1f000 00005724a6f20000 r--p  00000000 8530011 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 00005724a6f20000 00005724a6f21000 r-xp  00001000 8530011 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 00005724a6f21000 00005724a6f22000 r--p  00002000 8530011 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 00005724a6f22000 00005724a6f23000 r--p  00002000 8530011 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 00005724a6f23000 00005724a6f24000 rw-p  00003000 8530011 <span style="color: #949494;">"</span>/opt/R/4.6.2/lib/R…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 00005724c3b15000 00005724caae6000 rw-p  00000000 0       <span style="color: #949494;">"</span>[heap]<span style="color: #949494;">"</span>            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 00007248c8000000 00007248c8021000 rw-p  00000000 0       <span style="color: #949494;">""</span>                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 00007248c8021000 00007248cc000000 ---p  00000000 0       <span style="color: #949494;">""</span>                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 00007248ce600000 00007248ce683000 r--p  00000000 8539654 <span style="color: #949494;">"</span>/home/runner/work/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 00007248ce683000 00007248ce83a000 r-xp  00083000 8539654 <span style="color: #949494;">"</span>/home/runner/work/…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 560 more rows</span></span>
 </code></pre></div>
     </div>
   </div>
