@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9043 (2026-11-27)
+
+## Continuous integration
+
+- Sync the workflows with cynkra/cynkratemplate (#74).
+
+
 # procmaps 0.0.5.9042 (2026-10-11)
 
 ## Chore
