@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# procmaps 0.0.5.9044 (2026-11-28)
+
+## Chore
+
+- Tidy DESCRIPTION with usethis::use_tidy_description() (#76).
+
+## Continuous integration
+
+- Sync the workflows with cynkra/cynkratemplate (#75).
+
+
 # procmaps 0.0.5.9043 (2026-11-27)
 
 ## Continuous integration
